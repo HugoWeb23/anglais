@@ -77,7 +77,7 @@ exit();
 <body>
 
 <form method='post' action="">
-<h1>Salutaaa</h1>
+<h1>Salut</h1>
 <h4>Lancer une partie</h4> <br>
 <p>Renseigne un pseudo: </p>
 <p><input type="text" name="pseudo"></input>
