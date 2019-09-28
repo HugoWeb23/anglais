@@ -8,7 +8,7 @@ require('config.php');
  <head>
 
 
- <title>Tes résultatsssssssssssssss</title>
+ <title>Tes résultats</title>
 
 
    <link rel="stylesheet" type="text/css" href="styles.css">
@@ -18,7 +18,7 @@ require('config.php');
 
  <body>
 
-   <h1>Voici tes résultats</h1>
+   <h1>Voici tes résultatsssssss</h1>
    <h3>Lorsqu'une tu n'as pas bien répondu à une question, ta réponse s'affiche pour que tu puisses visualiser ton erreur.</h3>
 
    <?php
