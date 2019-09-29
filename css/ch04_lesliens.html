@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Les Liens</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="fonts/stylesheet.css" />
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="retour"><h3><a href="ch03_organisertexte.html" title="Chapitre 3 : Organiser du texte">&lt;&lt;</a>&nbsp;&nbsp;<a href="index.html" title="Retour à la table des matières">Table des Matières</a>&nbsp;&nbsp;<a href="ch05_lesimages.html" title="Chapitre 5 : les images">&gt;&gt;</a></h3></div>
+        <div id="container">
+            <header><h1>Les Liens</h1></header>
+            <section>
+                <article>
+                    <p>
+                        Un site Web n'est pas composé d'une seule page. Il en faut plusieures pour pouvoir prétendre avoir créé un site.<br />
+                        Comment relier ces pages les unes aux autres ? Comment faire pour créer un <mark>lien</mark> vers le site d'un ami ?
+                    </p>
+                    <p>
+                        Le terme est lâché, il faut donc créer un <mark>lien</mark>. La balise pour les liens est, à la base, aussi simple que le <span class="balise">&lt;p&gt;</span> puisqu'il s'agit du <span class="balise">&lt;a&gt;</span>.<br />
+                        Je dis bien "à la base" parce que sans attributs, la balise <span class="balise">&lt;a&gt;</span> ne servira à rien.
+                    </p>
+                </article>
+                <article>
+                    <h2 id="lienexterne">Liens Externes</h2>
+                    <p>Voyons voir tout d'abord comment diriger les visiteurs vers un site autre que le nôtre. Cela s'appelera un <strong>lien externe</strong>.</p>
+                    <div class="code">
+                        <span class="balise">&lt;a</span> <span class="attribut">href</span>="<span class="valeur">http://www.technocite.be</span>"<span class="balise">&gt;</span>Lien vers Technocité<span class="balise">&lt;/a&gt;</span>
+                    </div>
+                    <p>
+                        C'est donc l'attribut <span class="attribut">href</span> qui contiendra comme valeur l'URL du site vers lequel diriger le visiteur. A noter qu'il faut l'adresse Internet complète en incluant le <mark>http://</mark>.<br />
+                        C'est ce que l'on appelera un lien <strong>absolu</strong>.
+                    </p>
+                </article>
+                <article>
+                    <h2 id="lieninterne">Liens Internes</h2>
+                    <p>
+                        Pour faire un lien interne, c'est à dire un lien qui nous emmènera de la page1 de notre site vers la page2, il faut de nouveau utiliser l'attribut <span class="attribut">href</span>.
+                    </p>
+                    <div class="code">
+                        <span class="balise">&lt;a</span> <span class="attribut">href</span>="<span class="valeur">page2.html</span>"<span class="balise">&gt;</span>Vers la page 2<span class="balise">&lt;/a&gt;</span>
+                    </div>
+                    <p>
+                        Ceci uniquement dans le cas où notre <mark>page2.html</mark> se trouve au même endroit, donc dans le même dossier, que la <mark>page1.html</mark>.<br />
+                        Ici ce n'est pas un lien absolu qui a été utilisé, mais plutôt un lien relatif. Bien qu'il soit possible d'écrire l'url en entier pour faire un lien interne, il est déconseillé de le faire.
+                    </p>
+                    <p>
+                        Si votre <mark>page2.html</mark> se trouve dans un dossier différent de la <mark>page1.html</mark>, il va falloir adapter la valeur de l'attribut <span class="attribut">href</span>.
+                    </p>
+                    <p class="ttlcadre">Page2 située dans un dossier "enfant" de celui de la Page1 </p>
+                    <div class="code">
+                        <span class="balise">&lt;a</span> <span class="attribut">href</span>="<span class="valeur">dossier/page2.html</span>"<span class="balise">&gt;</span>Vers ma page 2<span class="balise">&lt;/a&gt;</span>
+                    </div>
+                    <p class="ttlcadre">Page2 située dans le dossier "parent" de celui de la Page1 </p>
+                    <div class="code">
+                        <span class="balise">&lt;a</span> <span class="attribut">href</span>="<span class="valeur">../page2.html</span>"<span class="balise">&gt;</span>Vers ma page 2<span class="balise">&lt;/a&gt;</span>
+                    </div>
+                    <p class="ttlcadre">Page2 située dans un dossier "parallèle" à celui de la Page1 </p>
+                    <div class="code">
+                        <span class="balise">&lt;a</span> <span class="attribut">href</span>="<span class="valeur">../dossier/page2.html</span>"<span class="balise">&gt;</span>Vers ma page 2<span class="balise">&lt;/a&gt;</span>
+                    </div>
+                </article>
+                <article>
+                    <h2 id="lienancre">Lien vers une ancre</h2>
+                    <p>
+                        Il peut arriver que le contenu d'une seule page soit tellement long qu'il faut beaucoup de temps pour remonter dans la page, ou pour arriver dans le bas.<br />
+                        Il est possible de créer un lien à l'intérieur d'une même page, toujours grâce à la balise <span class="balise">&lt;a&gt;</span>.
+                    </p>
+                    <p>
+                        Pour cela, il va falloir préalablement donner un id à une balise qui servira de repère.
+                    </p>
+                    <div class="code">
+                        <span class="balise">&lt;h1</span> <span class="attribut">id</span>="<span class="valeur">monancre</span>"<span class="balise">&gt;</span>Titre de mon site<span class="balise">&lt;h1&gt;</span>
+                    </div>
+                    <p>
+                        Plus loin dans la page, dans le bas par exemple, une fois que tout le texte a été lu, nous allons ajouter un lien qui va nous remonter vers notre repère :
+                    </p>
+                    <div class="code">
+                        <span class="balise">&lt;a</span> <span class="attribut">href</span>="<span class="valeur">#monancre</span>"<span class="balise">&gt;</span>Haut de la page<span class="balise">&lt;/a&gt;</span>
+                    </div>
+                    <p>
+                        Si l'on désire faire un lien vers une ancre qui se trouve sur la page2.html, il faudra entrer le lien relatif vers la page en question suivi de l'ancre :
+                    </p>
+                    <div class="code">
+                        <span class="balise">&lt;a</span> <span class="attribut">href</span>="<span class="valeur">page2.html#monancre</span>"<span class="balise">&gt;</span>Mon ancre sur la page 2<span class="balise">&lt;/a&gt;</span>
+                    </div>
+                </article>
+                <article>
+                    <h2 id="caspratiques">Cas pratiques</h2>
+                    <p>
+                        Pour aller un peu plus loin, nous allons voir ce qu'il est également possible de faire avec la balise <span class="balise">&lt;a&gt;</span>.
+                    </p>
+                    <p class="ttlcadre">Une infobulle</p>
+                    <div class="code">
+                        <span class="balise">&lt;a</span> <span class="attribut">href</span>="<span class="valeur">monlien.html</span>" <span class="attribut">title</span>="<span class="valeur">Infobulle</span>"<span class="balise">&gt;</span>Mon lien<span class="balise">&lt;/a&gt;</span>
+                    </div>
+                    <p>
+                        La valeur de l'attribut <span class="attribut">title</span> devrait contenir une description du lien. Le lien lui-même par exemple, ou un texte court définissant ce vers quoi mène le lien.<br />
+                        Ce sera très utile pour les synthétiseurs vocaux qu'utilisent les malvoyants et aveugles. Cela leur permettra de savoir vers où ils vont. De plus, les moteurs de recherche peuvent se baser sur ces valeurs pour référencer le site. Soyez donc précis et utilisez des mots clés adéquats.
+                    </p>
+                    <p>
+                        D'accord, mais pourquoi parle-t-on d'une infobulle&nbsp;?<br />
+                        Simplement parce que lors du passage du curseur de la souris sur le lien, une infobulle contenant la valeur de l'attribut <span class="attribut">title</span> appraîtra.
+                    </p>
+                    <p class="ttlcadre">Ouvrir un lien dans une nouvelle fenêtre / un nouvel onglet</p>
+                    <div class="code">
+                        <span class="balise">&lt;a</span> <span class="attribut">href</span>="<span class="valeur">monlien.html</span>" <span class="attribut">target</span>="<span class="valeur">_blank</span>"<span class="balise">&gt;</span>Mon lien<span class="balise">&lt;/a&gt;</span>                        
+                    </div>
+                    <p>
+                        Nous ne pouvons pas forcer le lien à s'ouvrir dans une nouvelle fenêtre. Tout dépendra des paramètres de l'utilisateur. Dans Chrome, par exemple, <span class="attribut">target</span>="<span class="valeur">_blank</span>" ouvrira ma page par défaut dans un nouvel onglet.
+                    </p>
+                    <p class="ttlcadre">Envoyer un mail</p>
+                    <div class="code">
+                        <span class="balise">&lt;a</span> <span class="attribut">href</span>="<span class="valeur">mailto:monmail@mail.com</span>"<span class="balise">&gt;</span>Mon lien<span class="balise">&lt;/a&gt;</span>
+                    </div>
+                    <p class="ttlcadre">Télécharger un fichier</p>
+                    <div class="code">
+                        <span class="balise">&lt;a</span> <span class="attribut">href</span>="<span class="valeur">mondocument.pdf</span>"<span class="balise">&gt;</span>Mon lien<span class="balise">&lt;/a&gt;</span>                        
+                    </div>
+                </article>
+            </section>
+           <footer><p>Cours de HTML5 et CSS3 <a href="http://www.iepsm.be" title="claroline">iepsm</a></p></footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Structure d'une page</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="fonts/stylesheet.css" />
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="retour"><h3><a href="ch10_comportement.html" title="Chapitre 10 : comportement dynamique">&lt;&lt;</a>&nbsp;&nbsp;<a href="index.html" title="Retour à la table des matières">Table des Matières</a>&nbsp;&nbsp;<a href="ch12_lesboites.html" title="Chapitre 12 : les boîtes">&gt;&gt;</a></h3></div>
+        <div id="container">
+            <header><h1>Structure d'une page</h1></header>
+            <section>
+                <article>
+                    <h2 id="baliseshtml5">Les balises structurantes d'HTML 5</h2>
+                    <p>
+                        L'HTML5 est arrivé avec toute une panoplie de nouveautés. Nous allons voir ici principalement les balises qui vont nous être utiles pour la structure de notre site. C'est à dire la balise à utiliser si l'on souhaite ajouter une en-tête, laquelle serait le plus adaptée pour le menu, etc.
+                    </p>
+                    <p>
+                        Jusqu'à présent, pour diviser une page Web en plusieures parties, il fallait utiliser des <span class="balise">&lt;div&gt;</span> auxquelles on donnait un <span class="attribut">id</span> précis. Ensuite, dans le fichier CSS, il suffisait d'appliquer une règle à cette <span class="balise">&lt;div&gt;</span> via son <span class="attribut">id</span>.
+                    </p>
+                    <p>
+                        Il a été constaté que souvent, pour les entêtes, on utilisait la balise <span class="balise">&lt;div&gt;</span> avec pour <span class="attribut">id</span> <span class="valeur">header</span>. La balise <span class="balise">&lt;header&gt;</span> a donc été créée.<br />
+                        Ce sera la même chose pour pieds de page avec <span class="balise">&lt;footer&gt;</span>, mais aussi d'autres balises encore donc voici la liste complète :
+                    </p>
+                    <p>
+                        <span class="balise">&lt;header&gt;&lt;/header&gt;</span> : à utiliser en en-tête. Il peut y avoir plusieurs en-tête dans la page.<br />
+                        <span class="balise">&lt;footer&gt;&lt;/footer&gt;</span> : pour le pied de page. Idem que pour l'en-tête, on peut le mettre plusieurs fois dans la page.<br />
+                        <span class="balise">&lt;nav&gt;&lt;/nav&gt;</span> : pour les liens de navigation, destiné à contenir des menus de type <span class="balise">&lt;ul&gt;</span> par exemple.<br />
+                        <span class="balise">&lt;section&gt;&lt;/section&gt;</span> : pour regrouper les contenus par thèmes. Peut contenir des <span class="balise">&lt;header&gt;</span> ou <span class="balise">&lt;footer&gt;</span> par exemple.<br />
+                        <span class="balise">&lt;aside&gt;&lt;/aside&gt;</span> : infos complétentaires.<br />
+                        <span class="balise">&lt;article&gt;&lt;/article&gt;</span> : articles de journeux, de blog,...
+                    </p>
+                    <p>
+                        Chaque section, ou en-tête peut contenir son titre <span class="balise">&lt;h1&gt;</span>.
+                    </p>
+                </article>
+                <article>
+                    <h2 id="exemplebaliseshtml5">Exemple</h2>
+                    <p class="ttlcadre">Exemple de code</p>
+                    <div class="code">
+                        <span class="balise">&lt;!doctype</span> <span class="attribut">html</span><span class="balise">&gt;</span><br />
+                        <span class="balise">&lt;html</span> <span class="attribut">lang</span>="<span class="valeur">fr</span>"<span class="balise">&gt;</span><br /><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;head&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;meta</span> <span class="attribut">charset</span>="<span class="valeur">utf-8</span>" /&gt;<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;title&gt;</span>Titre<span class="balise">&lt;/title&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;/head&gt;</span><br /><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;body&gt;</span><br /><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;header&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&nbsp;&nbsp;&lt;h1&gt;&lt;/h1></span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/header&gt;</span><br /><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;nav&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;ul&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;li&gt;&lt;/li&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;li&gt;&lt;/li&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/ul&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/nav&gt;</span><br /><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;section&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;aside&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;h1&gt;&lt;/h1&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;p&gt;&lt;/p&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/aside&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;article&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;h1&gt;&lt;/h1&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;p&gt;&lt;/p&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/article&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/section&gt;</span><br /><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;footer&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;p&gt;&lt;a</span> <span class="attribut">href</span>="<span class="valeur">#</span>"<span class="balise">&gt;</span>texte<span class="balise">&lt;/a&gt;&lt;/p&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/footer&gt;</span><br /><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;/body&gt;</span><br />
+                        <span class="balise">&lt;/html&gt;</span>
+                    </div>
+                    <figure>
+                        <img src="images/exempleagencement.png" alt="exemple agencement page HTML5" title="exemple agencement page HTML5" />
+                        <figcaption>Exemple d'agencement d'une page.<!-- image trouvée sur le site du zéro http://www.siteduzero.com --></figcaption>
+                    </figure>
+                </article>
+                <article>
+                    <h2 id="compatibiliteie">Compatibilité IE</h2>
+                    <p>
+                        Le soucis avec IE, est qu'il ne reconnaît ces nouvelles balises comme étant des blocks. Il y aura donc des soucis à l'affichage, voire pas d'affichage du tout.<br />
+                        Pour remédier à ça, il suffit très simplement d'ajouter une ligne de code entre les balises <span class="balise">&lt;head&gt;</span> :
+                    </p>
+                    <div class="code">
+                        <span class="balise">&lt;head&gt;</span><br />
+                        &nbsp;&nbsp;<span class="commentaire">&lt;!--[if lt IE 9]&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;script</span> <span class="attribut">src</span>="<span class="valeur">http://html5shiv.googlecode.com/svn/trunk/html5.js</span>"<span class="balise">&gt;&lt;/script&gt;</span><br />
+                        &nbsp;&nbsp;<span class="commentaire">&lt;![endif]--&gt;</span><br />
+                        <span class="balise">&lt;/head&gt;</span>
+                    </div>
+                    <p>Cette ligne s'activera uniquement si la page est ouverte dans une version antérieure à IE9. Il lie la page vers un script en Javascript qui va s'occuper de convertir les balises pour qu'elles soient reconnnues.</p>
+                </article>
+            </section>
+             <footer><p>Cours de HTML5 et CSS3 <a href="http://www.iepsm.be" title="claroline">iepsm</a></p></footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,178 @@
+#container {
+  font-family: "CandelaBook";
+  letter-spacing: 1px;
+  color: #333;
+  border-left: 200px solid #7a173f;
+  padding: 30px 20px; }
+
+#container section a {
+  text-decoration: none;
+  color: #7a173f; }
+
+#container header {
+  margin-bottom: 30px; }
+
+#container header h1 {
+  font-family: "PacificoRegular";
+  letter-spacing: normal;
+  font-size: 1.4em; }
+
+#container nav {
+  font-size: 1.1em; }
+
+#container nav ol {
+  list-style-type: decimal; }
+
+#container nav ul {
+  margin: 10px 0; }
+
+#container nav li {
+  margin-left: 20px; }
+
+#container nav li a {
+  text-decoration: none;
+  color: #45638a; }
+
+#container nav li a:hover {
+  text-decoration: none;
+  color: #7a173f; }
+
+#container nav li li {
+  font-size: 0.95em; }
+
+#container section article {
+  margin: 30px 0; }
+
+#container section article h2 {
+  font-family: "CandelaBook";
+  font-size: 1.1em;
+  margin-bottom: 10px; }
+
+#container section article p {
+  font-family: "Georgia";
+  font-size: 0.8em;
+  margin-bottom: 10px; }
+
+#container footer {
+  margin-top: 20px; }
+
+#container footer p {
+  font-size: 0.8em;
+  color: #999; }
+
+#container footer p a {
+  color: #999;
+  text-decoration: none; }
+
+#container mark {
+  font-weight: bold;
+  background-color: white; }
+
+#container figure {
+  text-align: center;
+  margin: 30px; }
+
+#container em {
+  font-style: italic; }
+
+#retour h3 {
+  border: 1px dashed #7a173f;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  padding: 7px;
+  font-family: "PacificoRegular";
+  background-color: #fefefe; }
+
+#retour h3 a {
+  font-size: 0.8em;
+  color: #7a173f;
+  text-decoration: none;
+  line-height: 18px; }
+
+.inline li {
+  display: inline; }
+
+.code {
+  width: 750px;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #7a173f;
+  background-color: #eee;
+  font-family: "Courier New", serif;
+  font-size: 0.8em; }
+
+.commentaire {
+  color: #999; }
+
+.balise {
+  font-family: "Courier New", serif;
+  font-weight: bold;
+  color: #17781F; }
+
+.attribut {
+  font-family: "Courier New", serif;
+  font-weight: bold;
+  color: #7a173f; }
+
+.valeur {
+  font-family: "Courier New", serif;
+  font-weight: bold;
+  color: #173F78; }
+
+.classe {
+  font-family: "Courier New", serif;
+  font-weight: bold;
+  color: #D89231; }
+
+.propriete {
+  font-family: "Courier New", serif;
+  color: #D83F31; }
+
+.valeurcss {
+  font-family: "Courier New", serif;
+  color: #9231D8; }
+
+.pseudoclasse {
+  font-family: "Courier New", serif;
+  color: #D89231;
+  font-style: italic; }
+
+.indent {
+  margin-left: 10px; }
+
+.aparte {
+  font-size: 0.8em;
+  color: #999; }
+
+.gras {
+  font-weight: bold; }
+
+.exemple {
+  width: 750px;
+  margin: 20px;
+  padding: 10px;
+  border: 1px dashed #7a173f;
+  font-family: "Georgia", serif;
+  font-size: 0.8em; }
+
+.rouge {
+  color: #f00; }
+
+#container .exemple p.reset {
+  font-family: "Georgia", serif;
+  font-size: 1em; }
+
+#container .exemple p.blockinline {
+  display: inline-block; }
+
+#container .ttlcadre {
+  font-family: "CandelaBook";
+  font-size: 0.9em;
+  color: #7a173f;
+  position: relative;
+  top: 15px;
+  left: 30px; }

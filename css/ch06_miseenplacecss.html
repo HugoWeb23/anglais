@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Mise en place du CSS</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="fonts/stylesheet.css" />
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="retour"><h3><a href="ch05_lesimages.html" title="Chapitre 5 : les images">&lt;&lt;</a>&nbsp;&nbsp;<a href="index.html" title="Retour à la table des matières">Table des Matières</a>&nbsp;&nbsp;<a href="ch07_leStexteS.html" title="Chapitre 7 : le texte">&gt;&gt;</a></h3></div>
+        <div id="container">
+            <header><h1>Mise en place du CSS</h1></header>
+            <section>
+                <article>
+                    <h2 id="ouecrirecss">Ou écrire le CSS ?</h2>
+                    <p>Avant tout, un petit rappel de la différence entre le HTML et le CSS.</p>
+                    <figure>
+                        <img src="images/sanscss.jpg" title="Page Web sans CSS" />
+                        <figcaption>Une page sans CSS</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/aveccss.jpg" title="Page Web avec CSS" />
+                        <figcaption>La même page avec CSS</figcaption>
+                    </figure>
+                    <p>
+                        Comme dit précédemment, le HTML nous a servi à structurer notre page, à créer des titres, du contenu, à ajouter des images.<br />
+                        À présent, avec les CSS, nous allons pouvoir donner meilleure allure à tout ça en modifiant la couleur, en créant des blocs, des contours...
+                    </p>
+                    <p>
+                        La première version des CSS (Cascading StyleSheet) est apparue en 1996. Mais alors, comment est-ce qu'ils faisaient pour changer la mise en forme de leur site à l'époque ?<br />
+                        Simplement, il existait des balises pour le faire. La balise <span class="balise">&lt;font&gt;</span> par exemple, qui maintenant n'existe plus, était utilisée avec différents attributs pour changer la taille, la couleur ou la police de caractère du texte.
+                    </p>
+                    <p>
+                        Pourquoi est-ce que ça a été supprimé ? Parce que peu pratique.<br />
+                        Nous allons voir ça plus loin, avec les explications pour l'intégration des CSS.<br />
+                        Alors, où écrit-on ces fameux CSS ?
+                    </p>
+                    <p class="ttlcadre">Dans un fichier .css à part</p>
+                    <div class="code">
+                        <span class="balise">&lt;!doctype</span> <span class="attribut">html</span><span class="balise">&gt;</span><br />
+                        <span class="balise">&lt;html</span> <span class="attribut">lang</span>="<span class="valeur">fr</span>"<span class="balise">&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;head&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;title&gt;</span>Titre de mon site<span class="balise">&lt;/title&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;link</span> <span class="attribut">rel</span>="<span class="valeur">stylesheet</span>" <span class="attribut">href</span>="<span class="valeur">css/monstyle.css</span>" <span class="balise">/&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;/head&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;body&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="commentaire">&lt;!-- contenu de mon site ici --&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;/body&gt;</span><br />
+                        <span class="balise">&lt;/html&gt;</span>
+                    </div>
+                    <p>
+                        Donc, première solution, écrire le css dans un document séparé. Ici, appelé <mark>monstyle.css</mark> et placé dans un dossier <mark>css</mark> au sein de mon site.<br />
+                        Il nous suffit ensuite de le lier à notre page html, non pas avec la balise <span class="balise">&lt;a&gt;</span> vue précédemment, mais avec une autre balise spécifique à ajouter dans l'entête <span class="balise">&lt;head&gt;</span>.
+                    </p>
+                    <p>
+                        Dans la zone de code ci-dessus, nous pouvons remarquer cette balise <span class="balise">&lt;link /&gt;</span>.<br />
+                        Grâce à ce lien, notre document HTML sait qu'il doit intégrer les données affichées dans le document CSS qui se trouve dans le dossier <mark>css</mark> et qui se nomme <mark>monstyle.css</mark>.<br />
+                        Je peux lier de la sorte toutes les autres pages de mon site vers ce même fichier CSS.
+                    </p>
+                    <p class="ttlcadre">Dans l'entête &lt;head&gt;</p>
+                    <div class="code">
+                        <span class="balise">&lt;!doctype</span> <span class="attribut">html</span><span class="balise">&gt;</span><br />
+                        <span class="balise">&lt;html</span> <span class="attribut">lang</span>="<span class="valeur">fr</span>"<span class="balise">&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;head&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;title&gt;</span>Titre de mon site<span class="balise">&lt;/title&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;style&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="classe">p</span> &#123;<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="propriete">color</span>: <span class="valeurcss">#ff0</span>;<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#125;<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/style&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;/head&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;body&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="commentaire">&lt;!-- contenu de mon site ici --&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;/body&gt;</span><br />
+                        <span class="balise">&lt;/html&gt;</span>
+                    </div>
+                    <p>
+                        Dans ce dernier exemple, une autre façon d'intégrer les CSS : ajouter une balise <span class="balise">&lt;style&gt;</span> dans l'entête <span class="balise">&lt;head&gt;</span> et y insérer les différentes règles CSS.<br />
+                        L'inconvénient de cette méthode, est que le style ne s'applique qu'à la page en cours. Il faut copier/coller toutes les règles dans toutes les autres pages de notre site Web.<br />
+                        Mais, c'est une solution qui peut être pratique dans le cas de la création d'une seule page.
+                    </p>
+                    <p class="ttlcadre">
+                        Dans les balises grâce à l'attribut "style"
+                    </p>
+                    <div class="code">
+                        <span class="balise">&lt;p</span> <span class="attribut">style</span>="<span class="propriete">color</span>:<span class="valeurcss">#ff0</span>;" <span class="balise">&gt;</span><span class="commentaire">&lt;!-- texte ici --&gt;</span><span class="balise">&lt;/p&gt;</span>
+                    </div>
+                    <p>
+                        Cette dernière situation est ce qui représente le mieux ce à quoi ressemblait le code avant l'apparition des CSS. Pour chaque paragraphe, il fallait ajouter une balise, <span class="balise">&lt;font&gt;</span> par exemple, pour venir ajouter de la couleur à notre texte. 
+                        Le gros problème avec cette méthode, c'est que non seulement il faut le mettre dans chaque page différente du site, mais en plus, si l'on désire mettre notre texte en bleu au lieu de rouge, il va falloir passer dans toutes les balises où une couleur a été appliquée et donc dans tous les paragraphes contenus dans chaque page de notre site Web.
+                    </p>
+                    <p>
+                        Bien qu'elle soit la moins efficace dans le cas d'un site complexe, il ne faut pas oublier que cette méthode existe parce qu'elle sera très utile, voire l'unique solution, dans le cas de la création de mailings, à envoyer par courrier électronique.
+                    </p>
+                    <p>
+                        Pour la suite du cours, il faudra donc retenir la première solution, celle qui consiste en la création d'un document .css séparé à lier à notre fichier HTML.
+                    </p>
+                </article>
+                <article>
+                    <h2 id="selectionnerbalises">Sélectionner les balises</h2>
+                    <p>
+                        Passons dans notre document .css et voyons voir comment modifier la couleur de nos paragraphes par exemple :
+                    </p>
+                    <div class="code">
+                        <span class="classe">p</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">color</span>: <span class="valeurcss">#ff00ff</span>; <br />
+                        &#125;
+                    </div>
+                    <p>Afin d'appliquer un style à nos paragraphes, donc à tout le texte qui est contenu dans les balises <span class="balise">&lt;p&gt;</span>, il suffit d'appeller notre balise en tapant tout simplement <span class="balise">p</span>.</p>
+                    <p>Ensuite, c'est entre des accolades que nous allons ajouter des <mark>propriétés</mark>, comme la couleur (color), la taille du texte (font-size), suivie de la valeur que l'on souhaite lui donner.</p>
+                    <p>Dans ce cas-ci, une couleur violette a été appliquée à nos paragraphes, grâce au code <strong>hexadécimal</strong> <mark>#ff00ff</mark>.</p>
+                    <div class="exemple">
+                        <p class="reset" style="color: #f0f;">Mon texte dans un paragraphe.</p>
+                        <p class="reset" style="color: #f0f;">Mon texte dans un deuxième paragraphe.</p>
+                    </div>
+                    <p>Le principe est donc simple :</p>
+                    <p class="ttlcadre">Appliquer un style</p>
+                    <div class="code">
+                        <span class="classe">balise 1</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">propriété</span> : <span class="valeurcss">valeur</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">propriété</span> : <span class="valeurcss">valeur</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">propriété</span> : <span class="valeurcss">valeur</span>;<br />
+                        &#125;<br />
+                        <br />
+                        <span class="classe">balise 2</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">propriété</span> : <span class="valeurcss">valeur</span>;<br />
+                        &#125;
+                    </div>
+                    <p class="ttlcadre">Appliquer à plusieurs balises</p>
+                    <div class="code">
+                        <span class="classe">h1</span>,&nbsp;<span class="classe">em</span>&nbsp;&#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">color</span> : <span class="valeurcss">blue</span>;<br />
+                        &#125;
+                    </div>
+                    <p>Tous les textes contenus entre les balises <span class="balise">&lt;h1&gt;&lt;/h1&gt;</span> et <span class="balise">&lt;em&gt;&lt;/em&gt;</span> seront de couleur bleue.</p>
+                    <p class="ttlcadre">Insérer un commentaire dans un fichier CSS</p>
+                    <div class="code">
+                        <span class="commentaire">/* Commentaire CSS */</span>
+                    </div>
+                </article>
+                <article>
+                    <h2 id="classetid">Les class et id</h2>
+                    <p>
+                        Et si je ne veux pas que tous mes paragraphes soient identiques ?<br />
+                        Si je veux qu'un paragraphe au milieu de tout soit rouge et tous les autres bleus, comment faire pour isoler ce paragraphe là ?
+                    </p>
+                    <p>
+                        Afin de cibler une balise en particulier, il est possible d'utiliser les attributs <span class="attribut">class</span> et <span class="attribut">id</span>.
+                    </p>
+                    <p class="ttlcadre">Dans le document HTML :</p>
+                    <div class="code">
+                        <span class="balise">&lt;h1</span> <span class="attribut">id</span>="<span class="valeur">montitre</span>"<span class="balise">&gt;</span>Mon Titre<span class="balise">&lt;/h1&gt;</span><br />
+                        <span class="balise">&lt;p</span> <span class="attribut">class</span>="<span class="valeur">monparagraphe</span>"<span class="balise">&gt;</span>Mon Texte<span class="balise">&lt;/p&gt;</span>
+                    </div>
+                    <p class="ttlcadre">Dans le fichier  CSS :</p>
+                    <div class="code">
+                        <span class="classe">#montitre</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">propriété</span> : <span class="valeurcss">valeur</span>;<br />
+                        &#125;<br />
+                        <br />
+                        <span class="classe">.monparagraphe</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">propriété</span> : <span class="valeurcss">valeur</span>;<br />
+                        &#125;
+                    </div>
+                    <p>
+                        Mais dans quels cas utiliser <span class="attribut">class</span> ou <span class="attribut">id</span> ? Est-ce qu'ils ne font pas double emploi ?<br />
+                        Il faut savoir qu'un ID est unique, alors qu'une class peut être utilisée plusieurs fois dans la même page. Dans le cas d'une en-tête par exemple, vu qu'il n'y en aura qu'une seule, il serait préférable de lui attribuer un ID. Au contraire, pour les bloc de paragraphes qui se retrouveront un peu partout sur la page, il vaut mieux leur appliquer une classe.
+                    </p>
+                    <p>
+                        Il existe deux balises dites universelles qui sont des balises "passe-partout". Elles ont été créées sans propriétés par défaut pour que l'on puisse les utiliser dans des situations précises en les modelant à notre convenance.<br />
+                    </p>
+                    <p>Ces balises sont :</p>
+                    <p>
+                        <span class="balise">&lt;div&gt;&lt;/div&gt;</span> : balise de type <em>block</em>, voisine des balises <span class="balise">&lt;p&gt;</span> et <span class="balise">&lt;h1&gt;</span>.<br />
+                        <span class="balise">&lt;span&gt;&lt;/span&gt;</span> : balise de type <em>inline</em>, comme les balises <span class="balise">&lt;strong&gt;</span> ou <span class="balise">&lt;em&gt;</span>.
+                    </p>
+                    <p>Pour mieux comprendre à quoi elles servent, voyons un exemple :</p>
+                    <div class="code">
+                        <span class="balise">&lt;p&gt;</span>Bonjour et bienvenue sur mon site Web !<span class="balise">&lt;/p&gt;</span>
+                    </div>
+                    <p>J'aimerais mettre en couleur rouge le mot <mark>bienvenue</mark>, comment faire ?</p>
+                    <div class="code">
+                        <span class="balise">&lt;p&gt;</span>Bonjour et <span class="balise">&lt;span</span> <span class="attribut">class</span>="<span class="valeur">rouge</span>"<span class="balise">&gt;</span>bienvenue<span class="balise">&lt;/span&gt;</span> sur mon site Web !<span class="balise">&lt;/p&gt;</span>                        
+                    </div>
+                    <p>J'ai sélectionné le mot <mark>bienvenue</mark>, mais pour le moment, aucun changement n'est visible sur mon site. Pour cela, il va falloir passer dans le fichier CSS et ajouter une propriété de couleur ayant pour valeur rouge à notre classe <em>"rouge"</em>.</p>
+                    <div class="code">
+                        <span class="classe">.rouge</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">color</span>: <span class="valeurcss">#ff0000</span>;<br />
+                        &#125;
+                    </div>
+                    <p>A présent, nous pouvons constater que le mot a bien été isolé du reste et qu'il s'affiche en rouge.</p>
+                    <div class="exemple">
+                        <p class="reset">Bonjour et <span style="color: #f00;">bienvenue</span> sur mon site Web !</p>
+                    </div>
+                </article>
+                <article>
+                    <h2 id="selecteursavances">Sélecteurs avancés</h2>
+                    <p>Voici quelques autres sélecteurs et d'autres façon de sélectionner les balises ou éléments qui se trouvent dans le document HTML :</p>
+                    <div class="code">
+                        <span class="classe">*</span> &#123;  &#125; <span class="commentaire">/* Sélectionne toutes les balises */</span><br />
+                        <span class="classe">p em</span> &#123; &#125; <span class="commentaire">/* Sélectionne les balises &lt;em&gt; qui se trouvent dans les balises &lt;p&gt; */</span><br />
+                        <span class="classe">p</span> + <span class="classe">a</span> &#123; &#125; <span class="commentaire">/* Sélectionne la première balise &lt;a&gt; qui suit une balises &lt;p&gt; */</span><br />
+                        <span class="classe">a</span><span class="attribut">[title]</span> &#123; &#125; <span class="commentaire">/* Sélectionne les &lt;a&gt; qui ont un attribut <em>title</em> */</span><br />
+                        <span class="classe">a</span><span class="attribut">[title="<span class="valeur">valeur</span>"]</span> &#123; &#125; <span class="commentaire">/* Sélectionne les &lt;a&gt; dont la valeur de title est <em>valeur</em> */</span><br />
+                        <span class="classe">a</span><span class="attribut">[title*="<span class="valeur">mot</span>"]</span> &#123; &#125; <span class="commentaire">/* Sélectionne les &lt;a&gt; dont la valeur de title contient <em>mot</em> */</span><br />
+                    </div>
+                </article>
+            </section>
+             <footer><p>Cours de HTML5 et CSS3 <a href="http://www.iepsm.be" title="claroline">iepsm</a></p></footer>
+        </div>
+    </body>
+</html>

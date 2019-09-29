@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Les tableaux</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="fonts/stylesheet.css" />
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+    </head>
+    <body>
+        <div id="retour"><h3><a href="ch13_lepositionnement.html" title="Chapitre 13 : le positionnement">&lt;&lt;</a>&nbsp;&nbsp;<a href="index.html" title="Retour à la table des matières">Table des Matières</a>&nbsp;&nbsp;<a href="ch15_formulaires.html" title="Chapitre 15 : formulaires">&gt;&gt;</a></h3></div>
+        <div id="container">
+            <header><h1>Les tableaux</h1></header>
+            <section>
+                <article>
+                    <h2 id="tabsimple">Tableau simple</h2>
+                    <p>Pour créer un tableau, il va falloir procéder par étapes. Tout d'abord, délimiter l'emplacement pour le tableau. Et ce, grâce à la balise <span class="balise">&lt;table&gt;&lt;/table&gt;</span>.</p>
+                    <div class="code">
+                        <span class="balise">&lt;table&gt;</span><br />
+                        <span class="commentaire">&lt;!-- Ajouter les rangées et cellules ici --&gt;</span><br />
+                        <span class="balise">&lt;/table&gt;</span>
+                    </div>
+                    <p>Le tableau n'est pas "opérationnel" si on n'y ajoute pas deux autres balises très importantes. Dans un ordre bien précis.</p>
+                    <p>
+                        Tout d'abord, il va falloir dire à mon tableau combien de lignes il va contenir. Pour cela, je vais utiliser la balise <span class="balise">&lt;tr&gt;</span>.<br />
+                        Et pour chaque ligne, nous définirons le nombre de cellules avec la balise <span class="balise">&lt;td&gt;</span>. Il faut savoir que le nombre de cellules doit être le même partout.
+                    </p>
+                    <div class="code">
+                        <span class="balise">&lt;table&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;tr&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;td&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="commentaire">&lt;!-- Cellule 1.1 --&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/td&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;td&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="commentaire">&lt;!-- Cellule 1.2 --&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/td&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;/tr&gt;</span><br />
+                         &nbsp;&nbsp;<span class="balise">&lt;tr&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;td&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="commentaire">&lt;!-- Cellule 2.1 --&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/td&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;td&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="commentaire">&lt;!-- Cellule 2.2 --&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/td&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;/tr&gt;</span><br />
+                         &nbsp;&nbsp;<span class="balise">&lt;tr&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;td&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="commentaire">&lt;!-- Cellule 3.1 --&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/td&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;td&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="commentaire">&lt;!-- Cellule 3.2 --&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;/td&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;/tr&gt;</span><br />
+                        <span class="balise">&lt;/table&gt;</span>
+                    </div>
+                    <p>Si vous essayez de taper ce code et que vous vous attendez à voir s'afficher un tableau avec des cellules, c'est pas de bol.<br />En effet, il va falloir passer par le CSS afin de donner une bordure à nos cellules parce que sans ça, rien ne sera visible.</p>
+                    <p><a href="demo_tab1.html" title="Exemple tableau 1">Exemple</a></p>
+                    <p>Contenu en cours de rédaction, en attendant : <a href="http://www.siteduzero.com/tutoriel-3-13584-les-tableaux.html" title="les tableaux sur le site du zéro">les tableaux sur le site du zéro</a></p>
+                </article>
+                <article>
+                    <h2 id="tabstructure">Tableau structuré</h2>
+                </article>
+            </section>
+             <footer><p>Cours de HTML5 et CSS3 <a href="http://www.iepsm.be" title="claroline">iepsm</a></p></footer>
+        </div>
+    </body>
+</html>

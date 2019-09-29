@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Le positionnement</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="fonts/stylesheet.css" />
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="retour"><h3><a href="ch12_lesboites.html" title="Chapitre 12 : les boîtes">&lt;&lt;</a>&nbsp;&nbsp;<a href="index.html" title="Retour à la table des matières">Table des Matières</a>&nbsp;&nbsp;<a href="ch14_lestableaux.html" title="Chapitre 14 : les tableaux">&gt;&gt;</a></h3></div>
+        <div id="container">
+            <header><h1>Le positionnement</h1></header>
+            <section>
+                <article>
+                    <h2 id="float">Float</h2>
+                    <p>
+                        Nous avons déjà eu un aperçu de ce que la propriété <span class="propriete">float</span> pouvait apporter à nos images.<br />
+                        Nous allons à présent voir l'utilisation que nous pouvons en faire pour la structure de notre page Web.
+                    </p>
+                    <p>Prenons comme exemple le cas d'une zone de navigation, qui contiendra les différents liens des pages de notre site, que l'on souhaite placer à gauche. Le contenu, lui, s'affichant sur la droite.</p>
+                    <div class="code">
+                        <span class="commentaire">&lt;!-- Tout d'abord le code HTML --&gt;</span><br />
+                        <span class="balise">&lt;header&gt;</span>Mon entête<span class="balise">&lt;/header&gt;</span><br />
+                        <span class="balise">&lt;nav&gt;</span><br />
+                        &nbsp;&nbsp;Navigation<br />
+                        &nbsp;&nbsp;<span class="balise">&lt;ul&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;li&gt;</span>Lien 1<span class="balise">&lt;/li&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;li&gt;</span>Lien 2<span class="balise">&lt;/li&gt;</span><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="balise">&lt;li&gt;</span>Lien 3<span class="balise">&lt;/li&gt;</span><br />
+                        &nbsp;&nbsp;<span class="balise">&lt;/ul&gt;</span><br />
+                        <span class="balise">&lt;/nav&gt;</span><br />
+                        <span class="balise">&lt;section&gt;</span><br />
+                        &nbsp;&nbsp;Contenu de mon site ici.<br />
+                        <span class="balise">&lt;/section&gt;</span><br />
+                        <span class="balise">&lt;footer&gt;</span>Mon pied de page<span class="balise">&lt;/footer&gt;</span><br />
+                        <br /><br />
+                        <span class="commentaire">/* A présent le css */</span><br />
+                        <span class="classe">header</span>, <span class="classe">footer</span>, <span class="classe">nav</span>, <span class="classe">section</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">border</span>: <span class="valeurcss">1px solid #000</span>;<br />
+                        &#125;<br />
+                        <br />
+                        <span class="classe">nav</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">width</span>: <span class="valeurcss">150px</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">float</span>: <span class="valeurcss">left</span>;<br />
+                        &#125;<br />
+                        <br />
+                        <span class="classe">section</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">height</span>: <span class="valeurcss">150px</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">width</span>: <span class="valeurcss">400px</span>;<br />
+                        &#125;
+                    </div>
+                    <div class="exemple">
+                        <div style="border: 1px solid #000; margin-bottom: 10px;">Mon entête</div>
+                        <div style="border: 1px solid #000; float: left; width: 150px;">
+                            Navigation
+                            <ul style="list-style-type: disc; margin-left: 10px; padding-left: 10px;">
+                                <li>Lien 1</li>
+                                <li>Lien 2</li>
+                                <li>Lien 3</li>
+                            </ul>
+                        </div>
+                        <div style="height: 150px; width: 400px; border: 1px solid #000;">
+                            Contenu de mon site ici.
+                        </div>
+                        <div style="border: 1px solid #000; margin-top: 10px;">Mon pied de page</div>
+                    </div>
+                    <p>
+                        Ca ne ressemble pas encore à ce que l'on voudrait obtenir. Il faudrait trouver une solution pour éloigner le block de contenu, de la zone de navigation.<br />
+                        Pour cela, deux solutions sont envisageables.
+                    </p>
+                    <p>
+                        La première serait de donner au bloc <span class="balise">&lt;section&gt;</span> une marge gauche un peu plus grande que la largeur du bloc <span class="balise">&lt;nav&gt;</span>.<br />
+                        Dans ce cas-ci était donné que <span class="classe">nav</span> possède une <span class="propriete">width</span> de 150px, il faudrait donc donner une <span class="propriete">margin-left</span> de plus de 150px à notre <span class="classe">section</span>.
+                    </p>
+                    <p>
+                        La seconde est de faire flotter le contenu à gauche également. Il viendra de la sorte se plaquer contre la zone de navigation sans passer dessous.<br />
+                        Mais il ne faudra pas oublier, dans ce cas là, de dire à notre pied de page qu'il doit ignorer le flottement des deux blocs précédents, et ce en lui appliquant un <span class="propriete">clear</span>: <span class="valeurcss">both</span> ou <span class="valeurcss">left</span>.
+                    </p>
+                    <p><a href="demo_floatblock.html" title="Démo float blocks">Voir les résultats</a></p>
+                </article>
+                <article>
+                    <h2 id="display">Display</h2>
+                    <p>
+                        La propriété <span class="propriete">display</span> est une propriété qui va nous permettre de contraindre nos éléments d'un type vers un autre.<br />
+                        Par exemple, transformer une balise <span class="balise">&lt;li&gt;</span> qui est de type <mark>block</mark> en un type de balise <mark>inline</mark> : nos <span class="balise">&lt;li&gt;</span> se positionneront sur la même ligne. Pratique pour faire un menu horizontal par exemple.
+                    </p>
+                    <p>
+                        <span class="propriete">display</span> peut prendre différentes valeurs :<br />
+                        <span class="valeurcss">block</span> : les uns endessous des autres, avec espacement, comme pour les balises <span class="balise">&lt;p&gt;</span>.<br />
+                        <span class="valeurcss">inline</span> : à l'inverse, transforme les balises block en balises de type inline, elles s'afficheront donc les unes à côté des autres.<br />
+                        <span class="valeurcss">inline-block</span> : un mix des deux. Les éléments s'afficheront sur la même ligne, mais auront les propriétés d'une balise de type block !<br />
+                        <span class="valeurcss">none</span> : va masquer la balise.
+                    </p>
+                </article>
+                <article>
+                    <h2 id="inlineblock">Inline-block</h2>
+                    <p>Voyons voir un peu plus en détails comment fonctionne la valeur <span class="valeurcss">inline-block</span>.</p>
+                    <div class="code">
+                        <span class="balise">&lt;p&gt;</span>Premier bloc paragraphe.<span class="balise">&lt;/p&gt;</span><br />
+                        <span class="balise">&lt;p&gt;</span>Deuxième bloc paragraphe.<span class="balise">&lt;br /&gt;</span> Et un retour à la ligne.<span class="balise">&lt;/p&gt;</span>
+                        <br /><br />
+                        <span class="commentaire">//---</span>
+                        <br /><br />
+                        <span class="classe">p</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">display</span>: <span class="valeurcss">inline-block</span>;<br /> 
+                        &nbsp;&nbsp;<span class="propriete">border</span>: <span class="valeurcss">1px solid #000</span>;<br />
+                        &#125;
+                    </div>
+                    <p>Dans ce cas-ci donc, je suis sensée me retrouver avec deux paragraphes, l'un à côté de l'autre.</p>
+                    <div class="exemple">
+                        <p class="reset" style="display: inline-block; border: 1px solid #000;">Premier bloc paragraphe.</p>
+                        <p class="reset" style="display: inline-block; border: 1px solid #000;">Deuxième bloc paragraphe.<br /> Et un retour à la ligne.</p>
+                    </div>
+                    <p>
+                        Super ! Ca marche ! Mes deux paragraphes sont bien l'un à côté de l'autre !<br />
+                        Maintenant, je constate que l'alignement vertical par défaut se trouve vers le bas. Mais heureusement, il est possible de modifier ça grâce à la propriété <span class="propriete">vertical-align</span>.
+                    </p>
+                    <p>
+                        <span class="valeurcss">baseline</span> : valeur par défaut, les blocs sont alignés avec la base de l'élément qui les contient (=le parent).<br />
+                        <span class="valeurcss">top</span> : aligne en haut.<br />
+                        <span class="valeurcss">middle</span> : aligne au milieu.<br />
+                        <span class="valeurcss">bottom</span> : aligne en bas.<br />
+                        <span class="valeurcss">10%</span>: valeur en px ou %, aligne à telle valeur par rapport à la ligne de base.
+                    </p>
+                    <p>
+                        Cette valeur est implémenté dans IE à partir de la version 8. Pour les versions précédentes, il va falloir créer une feuille de style et mettre une condition dans l'entête du document html.<br />
+                        Pour en savoir plus, voir sur le <a href="http://www.alsacreations.com/article/lire/76-haslayout-internet-explorer.html" title="Haslayout sur le site Alsacréation" target="_blank">site d'Alsacréations</a>.
+                    </p>
+                    <p>Voici à quoi ressemblerais la condition en question :</p>
+                    <div class="code">
+                        <span class="commentaire">
+                        &lt;!--[if lte IE 7]&gt;<br />
+                        &lt;link rel="stylesheet" href="style_ie.css" /&gt;<br />
+                        &lt;![endif]--&gt;
+                        </span>
+                    </div>
+                    <p>Dans ce cas-ci, je lui dis : "si le navigateur utilisé est plus ancien que IE7, alors utilise la feuille de style style_ie.css".<br />La feuille de style en question contiendra des adaptations qui auront été mises en place, spécialement pour ces navigateurs.</p>
+                </article>
+                <article>
+                    <h2 id="absolurelatiffixe">Positions absolue, relative et fixe</h2>
+                    <p>Nous allons à présent passer dans ce qui est, à mon sens, la propriété la plus intéressante des CSS. Je vous présente donc, la merveilleuse, la formidable, propriété <span class="propriete">position</span>.</p>
+                    <p>Tout ce qui est merveilleux demande un peu de réflexion et beaucoup de pratique, pour parvenir à le comprendre. Mais une fois que le principe en est acquis, toutes les possibilités s'offrent à nous.</p>
+                    <p>
+                        Il y a trois sortes de positionnement :<br />
+                        <mark>absolute</mark> : le positionnement absolu, nous permet de placer notre élément n'importe où sur la page. Les éléments qui se trouvent derrière vont en profiter pour "prendre sa place".<br />
+                        <mark>fixed</mark> : comme pour la position absolue, la fixe nous permet également de placer l'élément n'importe où sur la page, sauf que cet élément restera fixe (voire la propriété background-attachment: fixed).<br />
+                        <mark>relative</mark> : enfin, il nous sera possible de décaler un élément par rapport à sa position initiale. Les éléments suivant, resteront bien gentillement à leur place.
+                    </p>
+                    <p>Rien de tel que de tester cette propriété.</p>
+                    <div class="code">
+                        <span class="classe">div</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">position</span>: <span class="valeurcss">absolute</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">top</span>: <span class="valeurcss">10px</span>;<br/>
+                        &nbsp;&nbsp;<span class="propriete">right</span>: <span class="valeurcss">150px</span>;<br />
+                        &#125;
+                    </div>
+                    <p>Dans cet exemple, mon block ira se place à 10px du bord haut et à 150px du bord droit. En faisant défiler le texte, le block va défiler avec lui.</p>
+                    <p>
+                        En testant les mêmes valeurs avec les autres possibilités de positionnement, vous verrez des résultats différents.<br />
+                        Si vous souhaitez positionner des éléments par rapport à leur parent, il faudra positionner cet élément parent (en lui donnant une position relative, par exemple, sans lui préciser de déplacement).
+                    </p>
+                    <p>Si plusieurs de vos blocks doivent se superposer et que vous désirez contrôler lequel apparaît audessus des autres, il suffit pour cela d'utiliser la propriété <span class="propriete">z-index</span> simplement en lui donnant une valeur.<br /> Le block avec le z-index le moins élevé se retrouvera endessous et le plus élevée audessus.</p>
+                    <figure>
+                        <img src="images/zindex.png" title="z-index" alt="z-index" />
+                        <!-- image téléchargée sur le site du zéro www.siteduzero.com -->
+                    </figure>
+                </article>
+            </section>
+            <footer><p>Cours de HTML5 et CSS3 <a href="http://www.iepsm.be" title="claroline">iepsm</a></p></footer>
+        </div>
+    </body>
+</html>

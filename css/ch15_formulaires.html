@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Les formulaires</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="fonts/stylesheet.css" />
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="retour"><h3><a href="ch14_lestableaux.html" title="Chapitre 14 : les tableaux">&lt;&lt;</a>&nbsp;&nbsp;<a href="index.html" title="Retour à la table des matières">Table des Matières</a>&nbsp;&nbsp;<a href="ch16_mediaqueries.html" title="Chapitre 16 : mediaqueries">&gt;&gt;</a></h3></div>
+        <div id="container">
+            <header><h1>Les formulaires</h1></header>
+            <section>
+                <article>
+                    <h2 id="zoneformulaire">Zone de formulaire</h2>
+                    <p>
+                        Pour insérer un formulaire, il faut d'abord définir une zone qui va contenir les différents champs de saisie ou d'options.<br />
+                        Il suffit pour cela d'ajouter une balise <span class="balise">&lt;form&gt;</span> :
+                    </p>
+                    <div class="code">
+                        &lt;<span class="balise">form</span>&gt;<span class="commentaire"> &lt;!-- Mettre ici les balises de formulaire --&gt; </span>&lt;/<span class="balise">form</span>&gt;
+                    </div>
+                    <p>
+                        Deux attributs doivent obligatoirement être ajoutés au <span class="balise">&lt;form&gt;</span> pour qu'il fonctionne.<br />
+                        Il s'agit des attributs <span class="attribut">action</span> et <span class="attribut">method</span>.
+                    </p>
+                    <p>
+                        <span class="attribut">action</span> sera utilisé pour rediriger le résultat du formulaire vers une page, généralement en PHP, qui traitera les informations reçues. Les données seront envoyées soit vers une boîte mail, soit vers une base de données, ou alors elles seront affichées directement sur le site (dans le cas de commentaires, ou d'un forum par exemple).<br />
+                        <span class="attribut">method</span> est là quant à lui pour déterminer la méthode d'envoi du formulaire. La valeur <span class="valeur">GET</span> envoie les informations via l'URL, peu pratique car limité à 255 caractères. <span class="valeur">POST</span> est la valeur qui sera la plus utilisée pour les formulaires, les données ne passent pas par la barre d'adresse et permet l'envoi d'un plus grand nombre d'informations.
+                    </p>
+                    <p>
+                        Voici donc à quoi devrait ressembler notre zone de formulaire&nbsp;:<br />
+                    </p>
+                    <div class="code">
+                        &lt;<span class="balise">form</span> <span class="attribut">action</span>="results.php" <span class="attribut">method</span>="post"&gt;<br />
+                        <span class="commentaire indent"> &lt;!-- Mettre ici les balises de formulaire --&gt; </span><br />
+                        &lt;/<span class="balise">form</span>&gt;
+                    </div>
+                    <p><span class="aparte">Vous devez bien entendu imaginer que la page <span class="gras">results.php</span> existe.</span></p>
+                </article>
+                <article>
+                    <h2 id="champssimples">Les champs de saisie simples</h2>
+                    <p>
+                       Les champs les plus souvent utilisés dans un formulaire sont les champs de texte simple, d'une seule ligne. Pour saisir un nom, par exemple.<br />
+                       C'est la balise <span class="balise">&lt;input /&gt;</span> qui entre en jeu ici.
+                    </p>
+                    <p>
+                        Le type de cette balise est précisé à l'aide de l'attribut <span class="attribut">type</span>.<br />
+                        Nous voilà donc avec un premier champ à remplir dans notre formulaire&nbsp;:
+                    </p>
+                    <div class="code">
+                        &lt;<span class="balise">form</span> <span class="attribut">action</span>="results.php" <span class="attribut">method</span>="post"&gt;<br />
+                        <span class="indent"><span class="balise">&lt;p&gt;</span>&lt;<span class="balise">input</span> <span class="attribut">type</span>="text" /&gt;<span class="balise">&lt;/p&gt;</span></span><br />
+                        &lt;/<span class="balise">form</span>&gt;
+                    </div>
+                    <p>Ce qui nous donne&nbsp;:</p>
+                    <div class="exemple"><div><form action="results.php" method="post"><input type="text" /></form></div></div>
+                    <p>
+                        Intéressant, mais pas très utile !<br />
+                        <span class="indent">1. L'utilisateur doit-il deviner ce que doit contenir ce champ ?</span><br />
+                        <span class="indent">2. Comment récupérer la valeur de ce champ et moi-même m'y retrouver avec les informations qui y seront saisies ?</span><br />
+                        Pas d'autre choix que de continuer !
+                    </p>
+                    <p>
+                        Plusieurs éléments vont être ajoutés. Ils seront également utilisés dans la suite du formulaire.
+                    </p>
+                    <div class="code">
+                        &lt;<span class="balise">form</span> <span class="attribut">action</span>="results.php" <span class="attribut">method</span>="post"&gt;<br />
+                        <span class="indent">&lt;<span class="balise">label</span> <span class="attribut">for</span>="nom"&gt;Nom&nbsp;:&lt;/<span class="balise">label</span>&gt;&lt;<span class="balise">input</span> <span class="attribut">type</span>="text" <span class="attribut">name</span>="nom" <span class="attribut">id</span>="nom" /&gt;</span><br />
+                        &lt;/<span class="balise">form</span>&gt;
+                    </div>
+                    <div class="exemple">
+                        <form action="results.php" method="post"><label for="nom">Nom&nbsp;:</label> <input type="text" name="nom" id="nom" /></form>
+                    </div>
+                    <p>
+                        Regardons de plus près au code et voyons ce que sont toutes ces choses ajoutées.
+                    </p>
+                    <p>
+                        <span class="balise">&lt;label&gt;</span> va nous servir ici pour donner une "étiquette" au champ à remplir. Grâce au <span class="balise">&lt;label&gt;</span>, qu'on lie à son champ avec l'attribut <span class="attribut">for</span>, non seulement l'utilisateur voit ce qu'il doit écrire mais en plus, les synthétiseurs vocaux pour malvoyants et aveugles s'y retrouveront également et sauront associer les informations au bon champ.
+                    </p>
+                    <p>
+                        Afin que la liaison soit correct, il faut que la valeur de l'attribut <span class="attribut">for</span> soit la même que celle de l'<span class="attribut">id</span> de la balise <span class="balise">&lt;input /&gt;</span>. Nous allons en profiter également pour donner la même valeur à l'attribut <span class="attribut">name</span>. C'est grâce à ce nom qu'il sera possible de reconnaître quelles informations correspondent à quel champ dans le document PHP. Par exemple, si le texte "Laurent" est reçu, en vérifiant le nom du champ, il nous sera possible de vérifier si il s'agit du prénom, du nom de famille, ou encore du nom de la société.
+                    </p>
+                    <p>
+                        
+                    </p>
+                </article>
+                <article>
+                    <h2 id="champsenrichis">Champs de saisie enrichis</h2>
+                    <p>La suite est en cours de rédaction, en attendant : <a href="http://www.siteduzero.com/tutoriel-3-13596-les-formulaires.html" title="les formulaires sur le site du zéro">les formulaires sur le site du zéro</a></p>
+                </article>
+                <article>
+                    <h2 id="champsoptions">Champs d'options</h2>
+                </article>
+                <article>
+                    <h2 id="boutons">Les boutons</h2>
+                </article>
+                <article>
+                    <h2 id="formavalidation">Validation et envoi du formulaire</h2>
+                </article>
+            </section>
+            <footer><p>Cours de HTML5 et CSS3 <a href="http://www.iepsm.be" title="claroline">iepsm</a></p></footer>
+
+        </div>
+    </body>
+</html>

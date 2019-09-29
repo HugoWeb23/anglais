@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Bordures et Ombres</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="fonts/stylesheet.css" />
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="retour"><h3><a href="ch08_couleuretfond.html" title="Chapitre 8 : couleur et fond">&lt;&lt;</a>&nbsp;&nbsp;<a href="index.html" title="Retour à la table des matières">Table des Matières</a>&nbsp;&nbsp;<a href="ch10_comportement.html" title="Chapitre 10 : comportement dynamique">&gt;&gt;</a></h3></div>
+        <div id="container">
+            <header><h1>Bordures et Ombres</h1></header>
+            <section>
+                <article>
+                    <h2 id="borduresnormales">Bordures normales</h2>
+                    <p><span class="propriete">border</span> est une nouvelle propriété que nous allons voir.</p>
+                    <div class="code">
+                        <span class="classe">p</span> &#123; <span class="propriete">border</span>: <span class="valeurcss">5px solid #7a173f</span>; &#125;
+                    </div>
+                    <div class="exemple">
+                        <p class="reset blockinline" style="border: 5px solid #7a173f; width: 170px; height: 170px;">Paragraphe avec une bordure "solid".</p>
+                        <p class="reset blockinline" style="border: 5px dashed #7a173f; width: 170px; height: 170px;">Paragraphe avec une bordure "dashed".</p>
+                        <p class="reset blockinline" style="border: 5px dotted #7a173f; width: 170px; height: 170px;">Paragraphe avec une bordure "dotted".</p>
+                        <p class="reset blockinline" style="border: 5px double #7a173f; width: 170px; height: 170px;">Paragraphe avec une bordure "double".</p>
+                        <p>&nbsp;</p>
+                        <p class="reset blockinline" style="border: 5px groove #7a173f; width: 170px; height: 170px;">Paragraphe avec une bordure "groove".</p>
+                        <p class="reset blockinline" style="border: 5px ridge #7a173f; width: 170px; height: 170px;">Paragraphe avec une bordure "ridge".</p>
+                        <p class="reset blockinline" style="border: 5px inset #7a173f; width: 170px; height: 170px;">Paragraphe avec une bordure "inset".</p>
+                        <p class="reset blockinline" style="border: 5px outset #7a173f; width: 170px; height: 170px;">Paragraphe avec une bordure "outset".</p>
+                    </div>
+                    <p>
+                        Il est possible de séparer chaque bordure dans le cas où l'on désire appliquer une bordure différente pour chaque côté:<br />
+                        <span class="propriete">border-top</span>, <span class="propriete">border-right</span>, <span class="propriete">border-bottom</span>, <span class="propriete">border-left</span>.
+                    </p>
+                </article>
+                <article>
+                    <h2 id="borduresarrondies">Bordures arrondies</h2>
+                    <p>
+                        Avant, dans le temps, à une époque très très lointaine, nous devions user de diverses ruses et subterfuges pour donner à nos paragraphes des coins arrondis.<br />
+                        Créer l'image dans photoshop, puis découper chaque coin séparément et s'arranger pour les placer juste comme il faut pour que ça passe inaperçu. Sachant qu'il ne "suffisait" pas non plus de créer un paragraphe avec plusieurs images de fond.
+                    </p>
+                    <p>
+                        Aujourd'hui, il y a <span class="propriete">border-radius</span>. Tout simplement.<br />
+                        Alors, comment fonctionne ce <span class="propriete">border-radius</span> ?
+                    </p>
+                    <div class="code">
+                        <span class="classe">p</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">border</span>: <span class="valeurcss">1px solid #000</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">border-radius</span>: <span class="valeurcss">20px</span>;<br />
+                        &#125;
+                    </div>
+                    <div class="exemple">
+                        <p class="reset" style="height: 100px; line-height: 100px; text-align: center; width: 100%; border: 1px solid #000; border-radius: 20px;">Paragraphe avec une bordure d'1px à coins arrondis.</p>
+                    </div>
+                    <p>
+                        Afin de maximiser la compatibilité entre les différents navigateurs et leurs anciennes versions il est préférable d'ajouter les préfixes vendeurs :<br />
+                        <span class="balise">-o-</span> pour Opera<br />
+                        <span class="balise">-moz-</span> pour Gecko (Mozilla)<br />
+                        <span class="balise">-webkit-</span> pour Webkit (Chrome, Safari, Android...)<br />
+                        <span class="balise">-ms-</span> pour Microsoft (Internet Explorer)<br />
+                        <span class="balise">-khtml-</span> pour KHTML (Konqueror)
+                    </p>
+                    <p>
+                        Dans le cas du <span class="propriete">border-radius</span>, seuls les préfixes <span class="balise">-moz-</span> et <span class="balise">-webkit-</span> doivent être ajoutés.<br />
+                        N'hésitez pas à aller jeter un oeil sur <a href="http://www.caniuse.com/#feat=border-radius" title="compatibilite border-radius">caniuse.com</a> si jamais vous n'êtes pas sûrs.
+                    </p>
+                    <p>Concrètement :</p>
+                    <div class="code">
+                        <span class="classe">p</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">border</span>: <span class="valeurcss">1px solid #000</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">border-radius</span>: <span class="valeurcss">20px</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">-moz-border-radius</span>: <span class="valeurcss">20px</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">-webkit-border-radius</span>: <span class="valeurcss">20px</span>;<br />
+                        &#125;
+                    </div>
+                    <p>Vous pouvez ici aussi appliquer un <span class="propriete">border-radius</span> différent à chaque coin (haut, droite, bas, gauche) :</p>
+                    <div class="code">
+                        <span class="classe">p</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">border</span>: <span class="valeurcss">1px solid #000</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">border-radius</span>: <span class="valeurcss">20px 10px 15px 5px</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">-moz-border-radius</span>: <span class="valeurcss">20px 10px 15px 5px</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">-webkit-border-radius</span>: <span class="valeurcss">20px 10px 15px 5px</span>;<br />
+                        &#125;
+                    </div>
+                    <div class="exemple">
+                        <p class="reset" style="height: 100px; line-height: 100px; text-align: center; width: 100%; border: 1px solid #000; border-radius: 20px 10px 15px 5px; -moz-border-radius: 20px 10px 15px 5px; -webkit-border-radius: 20px 10px 15px 5px;">Paragraphe avec une bordure d'1px à coins arrondis différents.</p>
+                    </div>
+                    <p>Et, encore plus loin, un arrondis en forme d'ellipse :</p>
+                     <div class="code">
+                        <span class="classe">p</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">border</span>: <span class="valeurcss">1px solid #000</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">border-radius</span>: <span class="valeurcss">30px / 15px</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">-moz-border-radius</span>: <span class="valeurcss">30px / 15px</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">-webkit-border-radius</span>: <span class="valeurcss">30px / 15px</span>;<br />
+                        &#125;
+                    </div>
+                    <div class="exemple">
+                        <p class="reset" style="height: 100px; line-height: 100px; text-align: center; width: 100%; border: 1px solid #000; border-radius: 30px / 15px; -moz-border-radius: 30px / 15px; -webkit-border-radius: 30px / 15px;">Paragraphe avec une bordure d'1px à coins arrondis en forme d'ellipse.</p>
+                    </div>
+                </article>
+                <article>
+                    <h2 id="ombres">Ombres</h2>
+                    <p>Ajouter une ombre à une "boîte", comme un paragraphe par exemple :</p>
+                    <div class="code">
+                        <span class="classe">p</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">border</span>: <span class="valeurcss">1px solid #000</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">box-shadow</span>: <span class="valeurcss">4px 4px 3px #000</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">-webkit-box-shadow</span>: <span class="valeurcss">4px 4px 3px #000</span>;<br />
+                        &#125;
+                    </div>
+                    <div class="exemple">
+                        <p class="reset" style="height: 100px; line-height: 100px; text-align: center; width: 100%; border: 1px solid #000; box-shadow: 4px 4px 3px #000; -webkit-box-shadow: 4px 4px 3px #000;">Paragraphe avec une ombre de 4px de décalage et de couleur noire.</p>
+                    </div>
+                    <p>
+                        Alors, que représentent ces différentes valeurs ?<br />
+                        1. Décalage horizontal<br />
+                        2. Décalage vertical<br />
+                        3. Adoucissement du dégradé (faible si inférieur au décalage, normal si égal, fort si supérieur)<br />
+                        4. La couleur
+                    </p>
+                    <p>Pour ombrer les textes, la propriété est différente. Nous allons plutôt utiliser <span class="propriete">text-shadow</span>, qui fonctionne avec les mêmes valeurs que <span class="propriete">box-shadow</span>.</p>
+                    <div class="code">
+                        <span class="classe">p</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">border</span>: <span class="valeurcss">1px solid #000</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">text-shadow</span>: <span class="valeurcss">2px 2px 2px #000</span>;<br />
+                        &#125;
+                    </div>
+                    <div class="exemple">
+                        <p class="reset" style="height: 100px; line-height: 100px; text-align: center; width: 100%; border: 1px solid #000; text-shadow: 2px 2px 2px #000;">Paragraphe avec un texte ombré.</p>
+                    </div>
+                    <p>Reconnue par tous les navigateurs sauf IE (seulement à partir de sa version 10), il n'est donc pas nécessaire d'ajouter un préfixe.</p>
+                </article>
+            </section>
+             <footer><p>Cours de HTML5 et CSS3 <a href="http://www.iepsm.be" title="claroline">iepsm</a></p></footer>
+        </div>
+    </body>
+</html>

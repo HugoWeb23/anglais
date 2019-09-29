@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Les boîtes</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="fonts/stylesheet.css" />
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="retour"><h3><a href="ch11_structurepage.html" title="Chapitre 11 : structure d'une page">&lt;&lt;</a>&nbsp;&nbsp;<a href="index.html" title="Retour à la table des matières">Table des Matières</a>&nbsp;&nbsp;<a href="ch13_lepositionnement.html" title="Chapitre 13 : le positionnement">&gt;&gt;</a></h3></div>
+        <div id="container">
+            <header><h1>Les boîtes</h1></header>
+            <section>
+                <article>
+                    <h2 id="blockinline">Block et Inline</h2>
+                    <p>Quelle est donc la différence entre les balises <mark>block</mark> et les balises <mark>inline</mark> desquelles on entend parler depuis le début ?</p>
+                    <p>
+                        Balise de type <mark>block</mark> : elles vont créer un espace avant et après l'élément. Les balises vont donc se superposer, comme pour les <span class="balise">&lt;p&gt;</span>.<br />
+                        Balise de type <mark>inline</mark> : elles se trouvent toujours dans une balise de type block. Elle s'écrit à la suite du texte précédent et donc sur la même ligne. Comme pour la balise <span class="balise">&lt;a&gt;</span> par exemple.
+                    </p>
+                    <p>
+                        Les balises de type inline sont par exemple : <span class="balise">&lt;a&gt; &lt;em&gt; &lt;strong&gt; &lt;mark&gt; &lt;img /&gt;</span><br />
+                        Les balises de type block sont par exemple : <span class="balise">&lt;p&gt; &lt;h1&gt; &lt;li&gt; &lt;section&gt; &lt;article&gt;</span>
+                    </p>
+                    <p><span class="balise">&lt;span&gt;</span> et <span class="balise">&lt;div&gt;</span> sont toutes les deux des balises universelles. La première est une balise de type inline et la seconde de type block.</p>
+                    <p>
+                        Il peut être tentant de vouloir utiliser <span class="balise">&lt;span&gt;</span> et <span class="balise">&lt;div&gt;</span> partout, mais il est déconseillé de le faire.<br />
+                        Puisque des balises sont prévues pour ça, il vaut mieux utiliser la balise <span class="balise">&lt;strong&gt;</span> au lieu de <span class="balise">&lt;span</span> <span class="attribut">id</span>="<span class="valeur">important</span>"<span class="balise">&gt;</span>.<br />
+                        Ou encore, se servir de la balise <span class="balise">&lt;h1&gt;</span> au lieu d'un <span class="balise">&lt;div</span> <span class="attribut">id</span>="<span class="valeur">titre</span>"<span class="balise">&gt;</span>.<br />
+                        Le résultat sera probablement le même, mais ne serait-ce que pour un bon référencement, utilisez les balises pour ce dont elles sont prévues.
+                    </p>
+                </article>
+                <article>
+                    <h2 id="dimensions">Dimensions</h2>
+                    <p>Il est possible de donner une taille aux blocks. Pour ce faire, nous allons utiliser les propriétés <span class="propriete">width</span> et <span class="propriete">height</span>.</p>
+                    <div class="code">
+                        <span class="classe">p</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">width</span>: <span class="valeurcss">50%</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">height</span>: <span class="valeurcss">200px</span>;<br />
+                        &#125;
+                    </div>
+                    <p>
+                        Dans l'exemple ci-dessus, on constate qu'il est possible de définir la taille soit en pourcentage, soit en pixels.<br />
+                        Par défaut, la hauteur <span class="propriete">height</span> est définie à <span class="valeurcss">auto</span> et la largeur <span class="propriete">width</span> à <span class="valeurcss">100%</span>.
+                    </p>
+                    <p>
+                        Gardez bien à l'esprit qu'il s'agit ici de la taille du <mark>contenu</mark> du block !<br />
+                        C'est à dire que si par la suite vous décidez d'ajouter une bordure et/ou une marge, par exemple, la taille de celles-ci vont venir s'ajouter à la taille du contenu du block.
+                    </p>
+                    <p class="ttlcadre">Min et Max</p>
+                    <div class="code">
+                        <span class="classe">p</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">width</span>: <span class="valeurcss">50%</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">max-width</span>: <span class="valeurcss">400px</span>;<br />
+                        &#125;
+                    </div>
+                    <p>Les propriétés <span class="propriete">min-width</span>, <span class="propriete">max-width</span>, <span class="propriete">min-height</span> et <span class="propriete">max-height</span>, vont nous permettre de rendre notre site plus fluide, tout en gardant le contrôle sur son affichage.</p>
+                </article>
+                <article>
+                    <h2 id="marges">Marges</h2>
+                    <p>Un texte complètement collé contre le bord d'une fenêtre de navigation, ce n'est pas très joli. Fort heureusement, en HTML, il est possible d'ajouter des marges à nos éléments.</p>
+                    <p>Deux types de marges : les marges intérieures et les marges extérieures.</p>
+                    <p class="ttlcadre">Marges intérieures</p>
+                    <div class="exemple">
+                        <p class="reset" style="padding: 10px; border: 1px solid #000;">Tous mes sens sont émus d'une volupté douce et pure, comme l'haleine du matin dans cette saison délicieuse. Seul, au milieu d'une contrée qui semble fait exprès pour un coeur tel que mien, j'y goûte à longs traits l'ivresse de la vie.</p>
+                        <p class="reset" style="border: 1px solid #000;">Tous mes sens sont émus d'une volupté douce et pure, comme l'haleine du matin dans cette saison délicieuse. Seul, au milieu d'une contrée qui semble fait exprès pour un coeur tel que mien, j'y goûte à longs traits l'ivresse de la vie.</p>
+                    </div>
+                    <p>
+                        Ci-dessus, un paragraphe avec une marge intérieure de 10px, et un autre sans.<br />
+                        Ces marges <mark>intérieures</mark> sont définies à l'aide de la propriété <span class="propriete">padding</span>.
+                    </p>
+                    <div class="code">
+                        <span class="classe">p</span><span class="pseudoclasse">.partout</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">padding</span> : <span class="valeurcss">10px</span>;<br />
+                        &nbsp;&nbsp;<span class="commentaire">/* les marges sont identiques des 4 côtés : haut, bas, gauche et droite */</span><br />
+                        &#125;<br />
+                        <br />
+                        <span class="classe">p</span><span class="pseudoclasse">.vh</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">padding</span> : <span class="valeurcss">10px 20px</span>;<br />
+                        &nbsp;&nbsp;<span class="commentaire">/* la marge en haut et en bas est de 10px, les gauche et droite sont de 20px */</span><br />
+                        &#125;<br />
+                        <br />
+                        <span class="classe">p</span><span class="pseudoclasse">.differentes</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">padding</span> : <span class="valeurcss">10px 0px 30px 20px</span>;<br />
+                        &nbsp;&nbsp;<span class="commentaire">/* dans l'ordre : haut, droite, bas, gauche. Comme pour les bordures */</span><br />
+                        &#125;<br />
+                        <br />
+                        <span class="classe">p</span><span class="pseudoclasse">.separees</span> &#123;<br />
+                        &nbsp;&nbsp;<span class="propriete">padding-right</span> : <span class="valeurcss">10px</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">padding-left</span> : <span class="valeurcss">20px</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">padding-top</span> : <span class="valeurcss">30px</span>;<br />
+                        &nbsp;&nbsp;<span class="propriete">padding-bottom</span> : <span class="valeurcss">40px</span>;<br />
+                        &nbsp;&nbsp;<span class="commentaire">/* il est possible d'agir sur chaque côté séparément */</span><br />
+                        &#125;
+                    </div>
+                    <p>Les marges extérieures fonctionnent de la même manière mais en utilisant cette fois-ci la propriete <span class="propriete">margin</span>.</p>
+                    <p class="ttlcadre">Marges extérieures</p>
+                    <div class="exemple">
+                        <div style="border: 1px solid #000;">
+                        <p class="reset" style="border: 1px solid #f0f; margin: 30px;">Tous mes sens sont émus d'une volupté douce et pure, comme l'haleine du matin dans cette saison délicieuse. Seul, au milieu d'une contrée qui semble fait exprès pour un coeur tel que mien, j'y goûte à longs traits l'ivresse de la vie.</p>
+                        </div>
+                    </div>
+                    <p>
+                        Dans cet exemple, mon paragraphe entouré d'une bordure rose, ne possède pas de marges intérieures, mais bien une marge extérieure de 30px qui le sépare du block qui le contient (bordure noire).<br />
+                        Il est possible de centrer un paragraphe dans un bloc en lui définissant une largeur et en lui attribuant une marge extérieur avec la valeur <span class="valeurcss">auto</span>.
+                    </p>
+                </article>
+                <article>
+                    <h2 id="debordements">Débordements</h2>
+                    <p>J'ai donné une dimension à ma boîte, je lui ai ajouté un texte et là, mauvaise surprise, le texte dépasse. Pourtant, il va falloir que l'on s'en accomode ! Quelles sont les solutions qui s'offrent à nous ?</p>
+                    <p>La propriété <span class="propriete">overflow</span> est notre issue de secours ! Voyons voir ce que l'on peut faire avec.</p>
+                    <p class="ttlcadre">Texte trop long</p>
+                    <div class="exemple">
+                        <p class="reset" style="height: 100px; width: 500px; border: 1px solid #000; margin-bottom: 120px;">Quand mon vallon chéri se couvre autour de moi d'une légère vapeur; qu'au-dessus de ma tête le soleil de midi darde ses rayons embrasés sur la sombre voûte de mon bois, au fond duquel, comme d'un sanctuaire, il introduit à peine une tremblante lumière; qu'étendu sur le gazon touffu, à la chute d'un ruisseau, je découvre avec ravissement une multitude de plantes, de fleurs d'une délicatesse infinie; que je vois s'agiter entre les brins d'herbe des milliers de vermisseaux, d'insectes, de moucherons, aux formes variées et innombrables; que j'entends résonner à mon oreille le murmure confus de ce petit monde; quand l'auguste présence de l'Être tout-puissant qui créa l'homme à son image, le souffle vivifiant du Dieu d'amour et de bonté qui nous porte et nous soutient sur un océan de délices éternels, me pénètrent de toutes parts, et que le ciel et la terre se réfléchissent dans mon âme sous le traits d'une amante adorée, alors je soupire et me dis: Oh! que ne puis-je exprimer ce que je sens si vivement! Ces émotions brûlantes, que ne m'est-il donné de les peindre en traits de flamme! </p>
+                        <p class="reset" style="height: 100px; width: 500px; border: 1px solid #000; overflow: hidden;">Quand mon vallon chéri se couvre autour de moi d'une légère vapeur; qu'au-dessus de ma tête le soleil de midi darde ses rayons embrasés sur la sombre voûte de mon bois, au fond duquel, comme d'un sanctuaire, il introduit à peine une tremblante lumière; qu'étendu sur le gazon touffu, à la chute d'un ruisseau, je découvre avec ravissement une multitude de plantes, de fleurs d'une délicatesse infinie; que je vois s'agiter entre les brins d'herbe des milliers de vermisseaux, d'insectes, de moucherons, aux formes variées et innombrables; que j'entends résonner à mon oreille le murmure confus de ce petit monde; quand l'auguste présence de l'Être tout-puissant qui créa l'homme à son image, le souffle vivifiant du Dieu d'amour et de bonté qui nous porte et nous soutient sur un océan de délices éternels, me pénètrent de toutes parts, et que le ciel et la terre se réfléchissent dans mon âme sous le traits d'une amante adorée, alors je soupire et me dis: Oh! que ne puis-je exprimer ce que je sens si vivement! Ces émotions brûlantes, que ne m'est-il donné de les peindre en traits de flamme! </p>
+                        <p class="reset" style="height: 100px; width: 500px; border: 1px solid #000; overflow: scroll;">Quand mon vallon chéri se couvre autour de moi d'une légère vapeur; qu'au-dessus de ma tête le soleil de midi darde ses rayons embrasés sur la sombre voûte de mon bois, au fond duquel, comme d'un sanctuaire, il introduit à peine une tremblante lumière; qu'étendu sur le gazon touffu, à la chute d'un ruisseau, je découvre avec ravissement une multitude de plantes, de fleurs d'une délicatesse infinie; que je vois s'agiter entre les brins d'herbe des milliers de vermisseaux, d'insectes, de moucherons, aux formes variées et innombrables; que j'entends résonner à mon oreille le murmure confus de ce petit monde; quand l'auguste présence de l'Être tout-puissant qui créa l'homme à son image, le souffle vivifiant du Dieu d'amour et de bonté qui nous porte et nous soutient sur un océan de délices éternels, me pénètrent de toutes parts, et que le ciel et la terre se réfléchissent dans mon âme sous le traits d'une amante adorée, alors je soupire et me dis: Oh! que ne puis-je exprimer ce que je sens si vivement! Ces émotions brûlantes, que ne m'est-il donné de les peindre en traits de flamme! </p>
+                        <p class="reset" style="height: 100px; width: 500px; border: 1px solid #000; overflow: auto;">Quand mon vallon chéri se couvre autour de moi d'une légère vapeur; qu'au-dessus de ma tête le soleil de midi darde ses rayons embrasés sur la sombre voûte de mon bois, au fond duquel, comme d'un sanctuaire, il introduit à peine une tremblante lumière; qu'étendu sur le gazon touffu, à la chute d'un ruisseau, je découvre avec ravissement une multitude de plantes, de fleurs d'une délicatesse infinie; que je vois s'agiter entre les brins d'herbe des milliers de vermisseaux, d'insectes, de moucherons, aux formes variées et innombrables; que j'entends résonner à mon oreille le murmure confus de ce petit monde; quand l'auguste présence de l'Être tout-puissant qui créa l'homme à son image, le souffle vivifiant du Dieu d'amour et de bonté qui nous porte et nous soutient sur un océan de délices éternels, me pénètrent de toutes parts, et que le ciel et la terre se réfléchissent dans mon âme sous le traits d'une amante adorée, alors je soupire et me dis: Oh! que ne puis-je exprimer ce que je sens si vivement! Ces émotions brûlantes, que ne m'est-il donné de les peindre en traits de flamme! </p>
+                    </div>
+                    <p>
+                        De haut en bas :<br />
+                        <mark>visible</mark> : valeur par défaut, le texte qui dépasse du paragraphe reste visible.<br />
+                        <mark>hidden</mark> : le texte dépasse encore, mais il est coupé, impossible de lire la suite.<br />
+                        <mark>scroll</mark> : que le texte soit trop long ou pas, nous forçons l'affichage d'une scrollbar. Ici, il y en a une dans le bas qui est ajoutée alors que nous n'en avions pas besoin.<br />
+                        <mark>auto</mark> : visibilité automatique. Nous laissons le choix au navigateur d'afficher ou pas une scrollbar. Le texte ne dépasse plus, mais grâce à l'ascenceur il est possible de lire la suite.<br />
+                    </p>
+                    <p>
+                        Comme vous pouvez le constater, il vaut donc mieux mettre la valeur <span class="valeurcss">auto</span> par défaut.
+                    </p>
+                    <p>
+                        Il existe une balise <span class="balise">&lt;iframe&gt;</span> qui pourrait donner le même résultat, mais elle ne fonctionne pas de la même manière.<br />
+                        En effet, une <span class="balise">&lt;iframe&gt;</span> affiche le contenue d'une autre page HTML dans la page actuelle. A consommer avec modération.
+                    </p>
+                    <p class="ttlcadre">Mot trop long</p>
+                    <div class="exemple">
+                        <p class="reset" style="width:300px; border: 1px solid #000;">http://www.une/adresse/internet/beaucoup/trop/longue/pour/etre/affichee/dans/le/paragraphe.com</p>
+                        <p class="reset" style="width:300px; border: 1px solid #000; word-wrap: break-word;">http://www.une/adresse/internet/beaucoup/trop/longue/pour/etre/affichee/dans/le/paragraphe.com</p>
+                    </div>
+                    <p>
+                        Il peut arriver que ce soit un seul "mot" qui soit trop long, comme dans l'exemple ci-dessus.<br />
+                        Il suffira dans ce cas, d'ajouter une propriété <span class="propriete">word-wrap</span> à notre paragraphe, avec pour valeur <span class="valeurcss">break-word</span>.<br />
+                        Le mot sera coupé et envoyé à la ligne.
+                    </p>
+                </article>
+            </section>
+             <footer><p>Cours de HTML5 et CSS3 <a href="http://www.iepsm.be" title="claroline">iepsm</a></p></footer>
+        </div>
+    </body>
+</html>

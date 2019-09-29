@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Création d'un site Web</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="fonts/stylesheet.css" />
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="retour"><h3><a href="index.html" title="Table des matières">&lt;&lt;</a>&nbsp;&nbsp;<a href="index.html" title="Retour à la table des matières">Table des Matières</a>&nbsp;&nbsp;<a href="ch02_baseshtml.html" title="Chapitre 2 : bases d'une page HTML">&gt;&gt;</a></h3></div>
+        <div id="container">
+            <header><h1>Création d'un site web</h1></header>
+            <section>
+                <article>
+                    <h2 id="commentcamarche">Comment ça marche ?</h2>
+                    <p>
+                        Vous avez certainement déjà surfé, ou plutôt <mark>navigué</mark> sur un site Web. Vous avez du, pour cela, utiliser un <mark>navigateur</mark> Web.<br />
+                        Le navigateur est en fait un programme qui va décoder l'HTML et le CSS, deux langages utilisés pour créer des sites Web, et nous afficher le tout tel qu'on le voit.
+                    </p>
+                    <figure>
+                        <img src="images/logos_navigateur.png" alt="navigateurs" title="Navigateurs Web" /><figcaption>Principaux navigateurs Web</figcaption>
+                    </figure>
+                    <p>
+                        L'HTML, comme le CSS, est à la base du Web. Il a été inventé par Tim Berners-Lee, en 1991. Plus tard, c'est cet homme qui a fondé le W3C (World Wide Web Consortium), un organisme dont la mission est de définir les nouvelles versions des langages.
+                    </p>
+                    <figure>
+                        <img src="images/html.jpg" alt="page html" title="page html" />
+                        <figcaption>Le code HTML</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/siteweb.jpg" alt="site web" title="site web" />
+                        <figcaption>Interprété par un navigateur</figcaption>
+                    </figure>
+                </article>
+                <article>
+                    <h2 id="htmlvscss">HTML vs CSS</h2>
+                    <p>
+                        Pourquoi est-ce qu'on a besoin de deux langages différents pour construire un site Web ?
+                    </p>
+                    <p>
+                        Le <mark>HTML</mark>, Hypertexte Markup Language, est un langage qui va nous servir pour la structure de la page. Ce n'est pas un langage de programmation ! Avec le HTML, on va déterminer ce qui sera le titre, ce qui sera le menu, etc.<br />
+                        Le <mark>CSS</mark>, Cascading StyleSheet, arrivé lui en 1996, va faciliter le travail et l'organisation du site, en permettant la séparation entre la structure et la mise en forme. C'est dans le CSS que l'on va définir la taille, la couleur, la position, etc.
+                    </p>
+                    <figure>
+                        <img src="images/sanscss.jpg" alt="site web sans CSS" title="Site Web sans CSS" />
+                        <figcaption>Un site web sans CSS</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/aveccss.jpg" alt="site web avec CSS"  title="Site Web avec CSS"/>
+                        <figcaption>Le même site web avec du CSS</figcaption>
+                    </figure>
+                </article>
+                <article>
+                    <h2 id="editeurdetexte">Les éditeurs de texte</h2>
+                    <p>
+                        C'est bien gentil tout ça, mais combien coûte le logiciel qui permet de faire du HTML et CSS ?
+                    </p>
+                    <p>
+                        RIEN. En fait, il suffit du bloc note. Ou n'importe quel outil qui permet d'écrire du texte ! Même word, si vous y tenez vraiment.<br />
+                        Il existe néanmoins plusieurs <mark>éditeurs de textes</mark>, gratuits, qui vont nous faciliter la tâche en utilisant des couleurs pour mettre en surbrillances les parties importantes du code.
+                    </p>
+                    <p>
+                        Le plus simple et peut-être le plus courant est <a href="http://notepad-plus-plus.org/fr/" title="Télécharger Notepad++">Notepad++</a>. C'est celui que l'on utilisera pour ce cours.<br />
+                        <span class="rouge">Exemples... + wysiwyg</span>
+                    </p>
+                </article>
+                <article>
+                    <h2 id="lesnavigateurs">Les Navigateurs</h2>
+                    <p>Les 5 navigateurs principaux sont (cliquez sur les icônes pour les télécharger) :</p>
+                        <ul class="inline">
+                            <li><a href="http://www.google.fr/chrome" title="Télécharger Chrome"><img src="images/chrome.png" alt="logo chrome" title="Logo Chrome" /></a></li>
+                            <li><a href="http://windows.microsoft.com/fr-FR/internet-explorer/products/ie/home" title="Télécharger Internet Explorer"><img src="images/ie.png" alt="logo ie" title="Logo IE" /></a></li>
+                            <li><a href="http://www.apple.com/fr/safari/download/" title="Télécharger Safari"><img src="images/safari.png" alt="logo safari" title="Logo Safari" /></a></li>
+                            <li><a href="http://www.opera.com/browser/" title="Télécharger Opera"><img src="images/opera.png" alt="logo opera" title="Logo Opera" /></a></li>
+                            <li><a href="http://www.mozilla.com/fr/firefox/" title="Télécharger Firefox"><img src="images/firefox.png" alt="logo firefox" title="Logo Firefox" /></a></li>
+                        </ul>
+                    <p>La différence entre tous ces navigateurs ? Simplement, ils n'interprètent pas tous de la même façon les langages HTML et CSS.</p>
+                    <p>Il est donc important de tester votre site sur chacun de ces navigateurs. En ce qui concerne Internet Explorer, il faudra même tester les version précédentes, à partir de IE6 jusqu'à l'actuel, parce que chaque version réagis différemment. Fort heureusement, IE6 est de moins en moins utilisé et il sera bientôt possible de l'ignorer.</p>
+                    <p>Il existe également des navigateurs pour mobiles. Il faudra aussi y penser.</p>
+                </article>
+            </section>
+            <footer><p>Cours de HTML5 et CSS3 <a href="http://www.iepsm.be" title="claroline">iepsm</a></p></footer>
+
+        </div>
+    </body>
+</html>
