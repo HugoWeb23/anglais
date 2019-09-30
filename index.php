@@ -22,6 +22,27 @@ $date = date("d/m/Y à H:i");
 
 $failure = false;
 
+if(strlen($pseudo) < 2) {
+
+  echo 'Merci de saisir un pseudo ! <br>';
+  $failure = true;
+}
+
+if(preg_match('#^[a-zA-Z0-9]*$#', $pseudo)) {
+
+} else {
+
+  echo 'Ton pseudo ne peut contenir que des lettres et des chiffres !<br>';
+  $failure = true;
+}
+
+if($theme == 0) {
+
+echo 'Choisis un thème ! <br>';
+
+  $failure = true;
+}
+
 if($nb_questions > 20) {
 
 echo 'Tu ne peux pas afficher plus de 20 questions';
@@ -77,7 +98,7 @@ exit();
 <body>
 
 <form method='post' action="">
-<h1>Salut</h1>
+<h1>Bienvenue</h1>
 <h4>Lancer une partie</h4> <br>
 <p>Renseigne un pseudo: </p>
 <p><input type="text" name="pseudo"></input>
