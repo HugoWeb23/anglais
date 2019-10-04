@@ -9,11 +9,7 @@
 
 <body>
 
-<<<<<<< HEAD
-<h1>Exercice 1</h1>98999999999999999999
-=======
 <h1>Exercice 1</h1>
->>>>>>> test
 
 <?php
 
