@@ -9,11 +9,11 @@
 
 <body>
 
-<h1>Exercice 1</h1>9
+<h1>Exercice 1</h1>
 
 <?php
 
-$moyenDeTransport = 'bateau';
+$moyenDeTransport = 'train';
 
 if($moyenDeTransport == 'voiture') {
 
