@@ -12,8 +12,6 @@
 
 require("config.php");
 
-echo 'test commit';
-
 	if(isset($_POST['envoyer'])) {
 
 $pseudo = ($_POST['pseudo']);
