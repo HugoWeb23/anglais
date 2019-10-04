@@ -9,7 +9,7 @@
 
 <body>
 
-<h1>Exercice 1</h1>9
+<h1>Exercice 1</h1>98
 
 <?php
 
