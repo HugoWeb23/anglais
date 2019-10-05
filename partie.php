@@ -23,11 +23,14 @@ require('config.php');
 
 
 $id = ($_GET['id']);
+$q = ($_GET['q']);
 
 
 if($id != "") {
 
-  $req1 = $bdd->query('SELECT * FROM selection_questions WHERE id_partie='.$id.' AND resultat = 1 ORDER BY id');
+  if($q != "") {
+
+  $req1 = $bdd->query('SELECT * FROM selection_questions WHERE id_partie='.$id.' AND id ='.$q.' AND resultat = 1 ORDER BY id');
 if (($req1->rowCount()) == 0) {
 
   header('Location: /resultats.php?id='.$id.'');
@@ -53,6 +56,8 @@ if ($resultat1['reponse'] == $reponse) {
 echo 'Réponse correcte';
 $req3 = $bdd->query('UPDATE selection_questions SET resultat=3 WHERE id='.$resultat['id'].' ORDER by id LIMIT 1');
 $req4 = $bdd->query('UPDATE parties SET points=points+1 WHERE id='.$id.' ORDER by id LIMIT 1');
+header('Location: /partie.php?id='.$id.'&q='.++$q.'');
+exit();
 
 } else {
 
@@ -60,15 +65,18 @@ echo 'Réponse incorrecte';
 $req4 = $bdd->query('UPDATE selection_questions SET resultat=2 WHERE id='.$resultat['id'].' ORDER by id LIMIT 1');
 $req5 = $bdd->prepare('INSERT INTO historique_reponses(id_question, id_partie, reponse) VALUES(:id_question, :id_partie, :reponse)');
 $req5->execute(array('id_question' => $resultat['id_question'], 'id_partie' => $id, 'reponse' => $reponse));
+header('Location: /partie.php?id='.$id.'&q='.++$q.'');
+exit();
 
    }
+   }
 
-
+}
 
   }
 
 
-}
+
 
 
  ?>

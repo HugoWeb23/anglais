@@ -65,7 +65,7 @@ $id_requete = $bdd->lastInsertId() ;
 
 
 
-$req1 = $bdd->query('SELECT * FROM questions WHERE id_theme='.$theme.' ORDER BY RAND( ) LIMIT '.++$nb_questions.'');
+$req1 = $bdd->query('SELECT * FROM questions WHERE id_theme='.$theme.' ORDER BY RAND() LIMIT 1,'.++$nb_questions.'');
 
 $resultat = $req1->fetch();
 
@@ -78,10 +78,14 @@ $req2 = $bdd->prepare('INSERT INTO selection_questions(id_question, id_partie, r
 $req2->execute(array('id_question' => $resultat['id'], 'id_partie' => $id_requete, 'resultat' => '1'));
 
 
-    $joueur_questions++;
+
 }
 
-header('Location: /partie.php?id='.$id_requete.'');
+$req22 = $bdd->query('SELECT * FROM selection_questions WHERE id_partie='.$id_requete.' ORDER BY id');
+
+$resultat11 = $req22->fetch();
+
+header('Location: /partie.php?id='.$id_requete.'&q='.$resultat11['id'].'');
 exit();
 
 
