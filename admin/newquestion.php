@@ -10,7 +10,7 @@ $theme = ($_POST['theme']);
 
 $failure = false;
 
-	if(strlen($question) < 5){
+	if(strlen($question) < 1){
 echo 'Il faut saisir une question ! <br>';
 $failure = true;
 		   }
@@ -85,6 +85,10 @@ $reponse->CloseCursor();
 
 </select>
 <p><button type="submit" class="bouton" name="creer">Créer une question</button></p>
+</form>
+
+<br>
+<p><a href="/admin/">Retour à l'accueil</a></p>
 </body>
 
 </html>

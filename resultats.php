@@ -18,13 +18,32 @@ require('config.php');
 
  <body>
 
-   <h1>Voici tes résultats</h1>
-   <h3>Lorsqu'une tu n'as pas bien répondu à une question, ta réponse s'affiche pour que tu puisses visualiser ton erreur.</h3>
-
    <?php
 
    $id = ($_GET['id']);
    if($id != "") {
+
+     ?>
+
+     <h1>Voici tes résultats</h1>
+
+     <?php
+
+     $req22 = $bdd->query('SELECT * FROM parties WHERE id='.$id.' ORDER BY id');
+
+     $score = $req22->fetch();
+
+     $stmt = $bdd -> prepare ( "SELECT count(*) FROM selection_questions WHERE id_partie = ?" );
+     $stmt -> execute ([ $id ]);
+     $count = $stmt -> fetchColumn ();
+
+
+      ?>
+
+     <p><font size="5px">Ton score : <?php echo ' '.$score['points']. '/'.$count. ''; ?></font></p>
+     <h3>Lorsqu'une tu n'as pas bien répondu à une question, ta réponse s'affiche pour que tu puisses visualiser ton erreur.</h3>
+
+     <?php
 
      $resultats = $bdd->query('SELECT * FROM selection_questions WHERE id_partie='.$id.' ');
 
