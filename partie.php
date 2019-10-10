@@ -101,8 +101,8 @@ exit();
  ?>
 <h1>Question <?php echo ++$count2; ?> sur <?php echo $count; ?> :</h1>
 
-<p>Réponds à la question suivante : <font size="5px"><b><?php echo $resultat1['question']; ?></b></font>
-  <p><input type="text" name="reponse"></input>
+<p><?php echo $resultat1['intitule_question']; ?> : <font size="5px"><b><?php echo $resultat1['question']; ?></b></font>
+  <p><input type="text" name="reponse" autofocus></input>
     <p><input type="submit" name="valider" value="Valider la réponse"></input>
 
 

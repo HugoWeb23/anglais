@@ -42,12 +42,7 @@ echo 'Choisis un thème ! <br>';
   $failure = true;
 }
 
-if($nb_questions > 20) {
 
-echo 'Tu ne peux pas afficher plus de 20 questions';
-$failure = true;
-
-}
 
 if($nb_questions < 2) {
 
@@ -63,12 +58,20 @@ $req = $bdd->prepare('INSERT INTO parties(prenom_joueur, date_partie) VALUES(:pr
 $req->execute(array('prenom_joueur' => $pseudo, 'date_partie' => $date));
 $id_requete = $bdd->lastInsertId() ;
 
+if ($theme == 999999) {
+
+  $req1 = $bdd->query('SELECT * FROM questions ORDER BY RAND() LIMIT 1,'.++$nb_questions.'');
+
+  $resultat = $req1->fetch();
+
+} else {
+
 
 
 $req1 = $bdd->query('SELECT * FROM questions WHERE id_theme='.$theme.' ORDER BY RAND() LIMIT 1,'.++$nb_questions.'');
 
 $resultat = $req1->fetch();
-
+}
 
 while ($resultat = $req1->fetch())
 {
@@ -108,6 +111,7 @@ exit();
 <p>Choisis un thème: </p>
 <p><select name="theme"></p>
   <option value="0">Choisis un thème</option>
+  <option value="999999">Questions sur tous les thèmes</option>
   <?php
   $reponse = $bdd->query('SELECT * FROM themes');
 
