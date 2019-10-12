@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+
+	<link rel="stylesheet" href="css/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="css/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<title>Administration</title>
+
+
+</head>
 <?php
 
 require('../config.php');
@@ -10,6 +23,11 @@ $reponse = ($_POST['reponse']);
 $theme = ($_POST['theme']);
 
 $failure = false;
+
+if(strlen($intitule_question) < 1){
+echo 'Il faut saisir un intitulé de question ! <br>';
+$failure = true;
+		 }
 
 	if(strlen($question) < 1){
 echo 'Il faut saisir une question ! <br>';
@@ -43,19 +61,6 @@ echo 'Question créée !';
 }
 
  ?>
-<!DOCTYPE html>
-<html>
-
-<head>
-
-
-  <link rel="stylesheet" type="text/css" href="styles.css">
-
-<title>Administration</title>
-
-
-</head>
-
 <body>
 <?php
 

@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
 
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="css/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+  <script src="css/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <title>Anglais V.1</title>
 
 </head>
+
+<body id="LoginForm">
+
+<form method='post' action="">
+  <div class="container">
+    <div class="login-form">
+    <div class="main-div">
 <?php
 
 require("config.php");
@@ -23,7 +32,13 @@ $failure = false;
 
 if(strlen($pseudo) < 2) {
 
-  echo 'Merci de saisir un pseudo ! <br>';
+echo "
+  <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
+  Merci de saisir un pseudo !
+  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+    <span aria-hidden=\"true\">&times;</span>
+  </button>
+</div>";
   $failure = true;
 }
 
@@ -31,14 +46,26 @@ if(preg_match('#^[a-zA-Z0-9]*$#', $pseudo)) {
 
 } else {
 
-  echo 'Ton pseudo ne peut contenir que des lettres et des chiffres !<br>';
+  echo "
+    <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
+    Ton pseudo ne peut contenir que des lettres et des chiffres !
+    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+      <span aria-hidden=\"true\">&times;</span>
+    </button>
+  </div>";
   $failure = true;
 }
 
 if($theme == 0) {
 
-echo 'Choisis un thème ! <br>';
-
+  echo "
+    <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
+  Choisis un thème !
+    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+      <span aria-hidden=\"true\">&times;</span>
+    </button>
+  </div>";
+ setcookie('pseudo', $_POST['pseudo']);
   $failure = true;
 }
 
@@ -46,8 +73,14 @@ echo 'Choisis un thème ! <br>';
 
 if($nb_questions < 2) {
 
-echo 'Tu dois au moins afficher 2 questions !';
-
+  echo "
+    <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
+  Tu dois afficher au moins 2 questions !
+    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+      <span aria-hidden=\"true\">&times;</span>
+    </button>
+  </div>";
+ setcookie('pseudo', $_POST['pseudo']);
 $failure = true;
 
 }
@@ -57,6 +90,7 @@ $failure = true;
 $req = $bdd->prepare('INSERT INTO parties(prenom_joueur, date_partie) VALUES(:prenom_joueur, :date_partie)');
 $req->execute(array('prenom_joueur' => $pseudo, 'date_partie' => $date));
 $id_requete = $bdd->lastInsertId() ;
+ setcookie('pseudo', $_POST['pseudo']);
 
 if ($theme == 999999) {
 
@@ -96,20 +130,14 @@ exit();
 }
 
 
- ?>
+?>
 
-
-
-
-<body>
-
-<form method='post' action="">
 <h1>Bienvenue</h1>
 <h4>Lancer une partie</h4> <br>
 <p>Renseigne un pseudo: </p>
-<p><input type="text" name="pseudo"></input>
+<p><input class="form-control form-control-lg" type="text" name="pseudo" value="<?php if (isset($_COOKIE["pseudo"])) { echo $_COOKIE['pseudo']; } ?>"></input>
 <p>Choisis un thème: </p>
-<p><select name="theme"></p>
+<p><select class="form-control form-control-lg" name="theme"></p>
   <option value="0">Choisis un thème</option>
   <option value="999999">Questions sur tous les thèmes</option>
   <?php
@@ -129,10 +157,12 @@ $reponse->CloseCursor();
 ?>
 </select>
 <p>Nombre de questions à poser (max 20):</p>
-<p><input type="text" class="button" name="nb_questions" size="5px"></input>
-<p><button type="submit" class="button" name="envoyer">Lancer</button></p>
+<p><input class="form-control form-control-lg" type="text" class="button" name="nb_questions" size="5px"></input>
+<p><button class="btn btn-primary btn-lg" type="submit" class="button" name="envoyer">Lancer la partie</button></p>
 
-
+</div>
+</div>
+</div>
 
 </body>
 
