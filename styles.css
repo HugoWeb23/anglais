@@ -27,6 +27,14 @@ body#LoginForm{ background-color: #6ebeda; background-repeat:repeat; background-
   padding: 50px 70px 70px 71px;
 }
 
+.main-div3 {
+  background: #ffffff none repeat scroll 0 0;
+  border-radius: 2px;
+  margin: 10px auto 30px;
+  max-width: 70%;
+  padding: 50px 70px 70px 71px;
+}
+
 .login-form .form-group {
   margin-bottom:5px;
 }
