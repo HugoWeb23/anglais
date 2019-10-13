@@ -57,11 +57,13 @@ $reponse = 'Réponse vide !';
 
     }
 
-if ($resultat1['reponse'] == $reponse) {
+if ($resultat1['reponse'] == (mb_convert_case($reponse, MB_CASE_LOWER, "UTF-8"))) {
 
 
 $req3 = $bdd->query('UPDATE selection_questions SET resultat=3 WHERE id='.$resultat['id'].' ORDER by id LIMIT 1');
 $req4 = $bdd->query('UPDATE parties SET points=points+1 WHERE id='.$id.' ORDER by id LIMIT 1');
+$req5 = $bdd->prepare('INSERT INTO historique_reponses(id_question, id_partie, reponse) VALUES(:id_question, :id_partie, :reponse)');
+$req5->execute(array('id_question' => $resultat['id_question'], 'id_partie' => $id, 'reponse' => $reponse));
 header('Location: /partie.php?id='.$id.'&q='.++$q.'');
 exit();
 

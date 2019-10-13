@@ -10,7 +10,7 @@
 <title>Anglais V.1</title>
 
 </head>
-
+<meta charset="utf-8">
 <body id="LoginForm">
 
 <form method='post' action="">
@@ -21,12 +21,15 @@
 
 require("config.php");
 
+
 	if(isset($_POST['envoyer'])) {
 
 $pseudo = ($_POST['pseudo']);
 $theme = ($_POST['theme']);
 $nb_questions = ($_POST['nb_questions']);
 $date = date("d/m/Y à H:i");
+
+
 
 $failure = false;
 
