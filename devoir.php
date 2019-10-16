@@ -66,7 +66,7 @@ echo '<br />';
 
 // Exercice 3
 
-/* Dans la condition 1 on ajoute 1 à $i, donc $i devient true. La condition affiche le résultat seulement si $i est true.
+/* Dans la condition 1, on ajoute 1 à $i, donc $i devient true. La condition affiche le résultat seulement si $i est true.
 
 Dans la condition 2, $e est incrémenté après la condition, il est donc false et ne s'affiche pas. */
 
