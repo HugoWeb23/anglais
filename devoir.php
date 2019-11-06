@@ -2,38 +2,58 @@
 <br />
 <?php
 
-$nombre = 10;
+$nombre1 = 1;
+$nombre2 = 1;
 
-while ($nombre >= 0) {
+while ($nombre1 < 11) {
 
-echo $nombre;
+
+
+while ($nombre2 < 11) {
+
+  if($nombre2 == 1) {
+
+  echo '<h3>Table de '.$nombre1.'</h3>';
+  }
+
+$resultat = $nombre2 * $nombre1;
+
+$nombre2++;
+
+
+echo $resultat;
 echo '<br />';
-
-$nombre--;
 
 }
 
- ?>
-<br />
 
-<h1>Exercice 2</h1>
-<br />
+if($nombre2 == 11) {
 
+$nombre1++;
+$nombre2 = 1;
+echo '<br />';
+}
+
+}
+?>
+<br />
+<h1>Exercice 2 </h2>
 <?php
 
+$a = '*';
+$b = 1;
 
-$a = 'oui';
-$b = 'non';
-$i = 1;
+while ($b < 10) {
 
-while ($i <= 5) {
 
-echo $a;
-echo '<br />';
-echo $b;
-echo '<br />';
-$i++;
+
+  echo $a;
+  $b++;
+
+
 
 }
+
+
 
  ?>

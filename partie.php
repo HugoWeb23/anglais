@@ -7,8 +7,9 @@ require('config.php');
 <html lang="fr">
 <head>
 
-<title>partie</title>
+<title>Partie</title>
 
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="css/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 <script src="css/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -91,7 +92,7 @@ exit();
 
 <?php
 
- $stmt = $bdd -> prepare ( "SELECT count(*) FROM selection_questions WHERE id_partie = ?" );
+$stmt = $bdd -> prepare ( "SELECT count(*) FROM selection_questions WHERE id_partie = ?" );
  $stmt -> execute ([ $id ]);
  $count = $stmt -> fetchColumn ();
 
