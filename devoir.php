@@ -1,78 +1,73 @@
-<h1>Exercice 1</h1>
-<br />
+<h1>Suite de Fibonacci (for)</h1>
+<br>
+
+<?php
+    function Fibonacci($p) {
+        if($p <= 0) return 0;
+        if($p == 1) return 1;
+        $u = 0;
+        $v = 1;
+        for($i=2; $i <= $p; $i++) {
+            $w = $u+$v;
+            $u = $v;
+            $v = $w;
+        }
+        return $v;
+    }
+
+    for($i=0;$i<=20;$i++) {
+        echo ''.Fibonacci($i).'<br>';
+    }
+    ?>
+<br>
+<h1>Suite de Fibonacci (while)</h1>
+<br>
 <?php
 
-$nombre1 = 1;
-$nombre2 = 1;
 
-while ($nombre1 < 11) {
+function Fibonacci2($p) {
+    if($p <= 0) return 0;
+    if($p == 1) return 1;
+    $u = 0;
+    $v = 1;
+      $i = 2;
+      while ($i <= $p) {
+        $w = $u+$v;
+        $u = $v;
+        $v = $w;
 
-
-
-while ($nombre2 < 11) {
-
-  if($nombre2 == 1) {
-
-  echo '<h3>Table de '.$nombre1.'</h3>';
-  }
-
-$resultat = $nombre2 * $nombre1;
-
-$nombre2++;
-
-
-echo $resultat;
-echo '<br />';
-
+        $i++;
+    }
+    return $v;
 }
 
 
-if($nombre2 == 11) {
 
-$nombre1++;
-$nombre2 = 1;
-echo '<br />';
-}
-
-}
-?>
-<br />
-<h1>Exercice 2</h1>
-<?php
 $i = 0;
+  while ($i <= 20) {
+    echo ''.Fibonacci2($i).'<br>';
 
-while ($i < 9) {
-
-$i++;
-
-$j = $i;
-
-
-
-while ($j > 0) {
-
-$j--;
-echo '*';
-
-}
-echo '<br />';
+    $i++;
 }
  ?>
-<br />
-<h1>Exercice 3</h1>
+ <br>
+ <h1>Exercice 3</h1>
+ <br>
+ <?php
 
-<?php
 
-for ($nb = 1; $nb <= 100; $nb++) {
+ $prenom = [
+  'David',
+  'Véronique',
+  'Valentin',
+  'Roger',
+  'Maurice'
+];
 
-  if ($nb > 50 AND $nb < 70) {
-continue;
+for($num=0; $num < 5; $num++) {
 
-  }
+echo $prenom[$num]. '<br>';
 
-echo $nb;
-echo '<br>';
 }
-?>
-<br />
-<h1>Exercice 4</h1>
+
+  ?>
