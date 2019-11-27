@@ -1,13 +1,12 @@
-<?php
-
-function fibo($n)
-{
-    return(($n < 2) ? 1 : fibo($n - 1) + fibo($n - 2));
+<script>
+function testNum(a) {
+  if (a > 0) {
+    return "positive";
+  } else {
+    return "NOT positive";
+  }
 }
-$n = ($argc == 2) ? $argv[1] : 1;
-$r = fibo($n);
-print "$r\n";
 
-
-fibo(55);
-?>
+console.log(testNum(-5));
+// expected output: "NOT positive"
+</script>

@@ -1,73 +1,132 @@
-<h1>Suite de Fibonacci (for)</h1>
+<h1>Exercice 1</h1>
 <br>
 
 <?php
-    function Fibonacci($p) {
-        if($p <= 0) return 0;
-        if($p == 1) return 1;
-        $u = 0;
-        $v = 1;
-        for($i=2; $i <= $p; $i++) {
-            $w = $u+$v;
-            $u = $v;
-            $v = $w;
-        }
-        return $v;
-    }
 
-    for($i=0;$i<=20;$i++) {
-        echo ''.Fibonacci($i).'<br>';
-    }
-    ?>
-<br>
-<h1>Suite de Fibonacci (while)</h1>
-<br>
-<?php
+$number = 20;
+$boolean = 1;
 
+$number1 = (string) $number;
+$boolean1 = (boolean) $boolean;
 
-function Fibonacci2($p) {
-    if($p <= 0) return 0;
-    if($p == 1) return 1;
-    $u = 0;
-    $v = 1;
-      $i = 2;
-      while ($i <= $p) {
-        $w = $u+$v;
-        $u = $v;
-        $v = $w;
+var_dump($number1);
+var_dump($boolean1);
 
-        $i++;
-    }
-    return $v;
-}
-
-
-
-$i = 0;
-  while ($i <= 20) {
-    echo ''.Fibonacci2($i).'<br>';
-
-    $i++;
-}
  ?>
+ <h1>Exercice 2</h1>
  <br>
+<?php
+
+$number_one = 30;
+$number_two = 25;
+
+echo $number_one + $number_two;
+
+ ?>
  <h1>Exercice 3</h1>
  <br>
  <?php
 
+$humain = false;
+$animal = true;
 
- $prenom = [
-  'David',
-  'Véronique',
-  'Valentin',
-  'Roger',
-  'Maurice'
-];
+if ($humain XOR $animal) {
 
-for($num=0; $num < 5; $num++) {
-
-echo $prenom[$num]. '<br>';
+echo 'Ok';
 
 }
 
   ?>
+  <h1>Exercice 3</h1>
+  <br>
+  <?php
+
+  $fruits = [
+  'Abricot',
+  'Airelle',
+  'Amande',
+  'Ananas',
+  'Avocat',
+  'Banane',
+  'Cassis',
+  'Cerise',
+  'Châtaigne',
+  'Citron',
+  'Clémentine',
+  'Coing',
+  'Datte',
+  'Figue fraîche',
+  'Fraise',
+  'Fraise des bois',
+  'Framboise',
+  'Fruit de la passion',
+  'Grenade',
+  'Groseille',
+  'Groseille à maquereau',
+  'Kaki',
+  'Kiwi',
+  'Kumquat',
+  ];
+
+  foreach ($fruits as $fruits) {
+
+
+if (substr($fruits,0,1) == "A") {
+
+echo $fruits. '<br>';
+
+
+}
+
+
+  }
+
+   ?>
+   <h1>Exercice 4</h1>
+   <br>
+<?php
+
+$fruits = [
+'Abricot',
+'Airelle',
+'Amande',
+'Ananas',
+'Avocat',
+'Banane',
+'Cassis',
+'Cerise',
+'Châtaigne',
+'Citron',
+'Clémentine',
+'Coing',
+'Datte',
+'Figue fraîche',
+'Fraise',
+'Fraise des bois',
+'Framboise',
+'Fruit de la passion',
+'Grenade',
+'Groseille',
+'Groseille à maquereau',
+'Kaki',
+'Kiwi',
+'Kumquat',
+];
+
+  foreach ($fruits as $nb => $fruits) {
+
+
+
+    if (($nb % 2) == 0) {
+
+
+echo $fruits. '<br>';
+
+    }
+
+
+
+}
+
+
+ ?>
