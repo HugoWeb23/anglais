@@ -41,13 +41,28 @@ $(document).ready(function() {
 });
 // jquery end
 </script>
+<style>
+.infos {
 
+margin-left: 500px;
+border-width: 5px;
+border-style: dashed;
+border-color: #365588;
+padding: 20px;
+font-size: 20px;
+
+}
+
+</style>
 </head>
 <header class="section-header">
 <form method='post' action="index.php">
 <nav class="navbar navbar-expand-lg navbar-light">
+
   <div class="container">
+
   	<a class="navbar-brand" href="/index.php"><img class="logo" src="https://i.gyazo.com/883e78742a37af94e8a81b2f57210ed1.png" alt="" title=""></a>
+      <span class="infos">Vente de matériel informatique<br>Réparation d'ordinateurs<br>Services à domicile</span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop" aria-controls="navbarTop" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -88,48 +103,18 @@ $(document).ready(function() {
 	</div> <!-- col.// -->
 	<div class="col-lg-9-24 col-sm-12">
 		<div class="widgets-wrap float-right row no-gutters py-1">
-			<div class="col-auto">
-			<div class="widget-header dropdown">
-				<a href="#" data-toggle="dropdown" data-offset="20,10">
+      <div class="col-auto">
+				<a href="/panier.php" class="widget-header">
 					<div class="icontext">
 						<div class="icon-wrap"><i class="text-warning icon-sm fa fa-user"></i></div>
 						<div class="text-wrap text-dark">
-						Connectez-vous
-							 <i class="fa fa-caret-down"></i>
+
+							Connectez-vous
 						</div>
 					</div>
 				</a>
-				<div class="dropdown-menu">
-					<div class="px-4 py-3">
+			</div>
 
-
-
-
-						<div class="form-group">
-						  <label>Adresse e-mail</label>
-						  <input type="email" class="form-control" name="email"  placeholder="email@exemple.com">
-						</div>
-						<div class="form-group">
-						  <label>Mot de passe</label>
-						  <input type="password" class="form-control" name="mdp"  placeholder="Password">
-						</div>
-						<button type="submit" name="connexion" class="btn btn-warning">Connexion</button>
-
-						</div>
-
-
-						<hr class="dropdown-divider">
-						<a class="dropdown-item" href="/inscription.php">Pas encore de compte ? Inscrivez-vous</a>
-						<a class="dropdown-item" href="#">Mot de passe oublié ?</a>
-
-
-						 <hr class="dropdown-divider">
-						<a class="dropdown-item" href="#">Gestion du compte</a>
-						<a class="dropdown-item" href="#">ee</a>
-
-				</div> <!--  dropdown-menu .// -->
-			</div>  <!-- widget-header .// -->
-			</div> <!-- col.// -->
 			<div class="col-auto">
 				<a href="/panier.php" class="widget-header">
 					<div class="icontext">
