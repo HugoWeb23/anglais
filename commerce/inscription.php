@@ -1,6 +1,6 @@
 ﻿
 <style>
-/* Credit to bootsnipp.com for the css for the color graph */
+/* Credit to bootsnipp.com for the css for the color gaph */
 .colorgraph {
   height: 5px;
   border-top: 0;
