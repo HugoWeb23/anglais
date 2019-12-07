@@ -34,7 +34,7 @@
 <table class="table table-hover shopping-cart-wrap">
 <thead class="text-muted">
 <tr>
-  <th scope="col">Produit</th>
+  <th scope="col">Articles</th>
   <th scope="col" width="120">Quantité</th>
   <th scope="col" width="120">Prix</th>
   <th scope="col" class="text-right" width="200">Action</th>
@@ -45,26 +45,23 @@
 
 	<td>
 <figure class="media">
-	<div class="img-wrap"><img src="https://media.ldlc.com/r374/ld/products/00/04/87/32/LD0004873218_2.jpg"></div>
+	<div class="img-wrap"><img src="https://media.ldlc.com/r374/ld/products/00/05/13/89/LD0005138991_2.jpg"></div>
 	<figcaption class="media-body">
-		<h6 class="title text-truncate">ddddddd </h6>
-		<dl class="dlist-inline small">
-		  <dt>Description : </dt>
-		  <dd>ddddd</dd>
-		</dl>
+		<h6 class="title text-truncate">Advance Origin</h6>
 		<dl class="dlist-inline small">
 		  <dt>Prix unitaire : </dt>
-		  <dd>300 €</dd>
+		  <dd>34,90 €</dd>
 		</dl>
 	</figcaption>
 </figure>
 	</td>
 	<td>
-
+		2
 	</td>
+
 	<td>
 		<div class="price-wrap">
-			<var class="price">666 €</var>
+			<var class="price">69,80 €</var>
 
 		</div> <!-- price-wrap .// -->
 	</td>
@@ -72,8 +69,92 @@
 	<a href="" class="btn btn-outline-danger"> × Retirer</a>
 	</td>
 </tr>
+<td>
+<figure class="media">
+<div class="img-wrap"><img src="https://media.ldlc.com/r374/ld/products/00/05/26/42/LD0005264256_2.jpg"></div>
+<figcaption class="media-body">
+	<h6 class="title text-truncate">Aerocool 5200 Window</h6>
+
+	<dl class="dlist-inline small">
+		<dt>Prix unitaire : </dt>
+		<dd>44,90 €</dd>
+	</dl>
+</figcaption>
+</figure>
+</td>
+<td>
+	1
+</td>
+
+<td>
+	<div class="price-wrap">
+		<var class="price">44,90 €</var>
+
+	</div> <!-- price-wrap .// -->
+</td>
+<td class="text-right">
+<a href="" class="btn btn-outline-danger"> × Retirer</a>
+</td>
+</tr>
+<tr>
+	<td>
+<figure class="media">
+	<div class="img-wrap"><img src="https://media.ldlc.com/r374/ld/products/00/01/68/04/LD0001680447_2.jpg"></div>
+	<figcaption class="media-body">
+		<h6 class="title text-truncate">Advance GRAFIT </h6>
+
+		<dl class="dlist-inline small">
+		  <dt>Prix unitaire : </dt>
+		  <dd>47,90 €</dd>
+		</dl>
+	</figcaption>
+</figure>
+	</td>
+	<td>
+		1
+	</td>
+
+	<td>
+		<div class="price-wrap">
+			<var class="price">47,90 €</var>
+
+		</div> <!-- price-wrap .// -->
+	</td>
+	<td class="text-right">
+	<a href="" class="btn btn-outline-danger"> × Retirer</a>
+	</td>
+</tr>
+<td>
+<figure class="media">
+<div class="img-wrap"><img src="https://media.ldlc.com/r374/ld/products/00/04/87/32/LD0004873228_2.jpg"></div>
+<figcaption class="media-body">
+	<h6 class="title text-truncate">Antec P7 Silent </h6>
+
+	<dl class="dlist-inline small">
+		<dt>Prix unitaire : </dt>
+		<dd>59,95 €</dd>
+	</dl>
+</figcaption>
+</figure>
+</td>
+<td>
+	3
+</td>
+
+<td>
+	<div class="price-wrap">
+		<var class="price">179,85 €</var>
+
+	</div> <!-- price-wrap .// -->
+</td>
+<td class="text-right">
+<a href="" class="btn btn-outline-danger"> × Retirer</a>
+</td>
+</tr>
 
 </tbody>
+
+
 
 </table>
 </div> <!-- card.// -->
@@ -81,31 +162,25 @@
 	</main> <!-- col.// -->
 	<aside class="col-sm-3">
 <dl class="dlist-align">
-  <dt>Produits : </dt>
-  <dd class="text-right">5 €</dd>
+  <dt>Articles : </dt>
+  <dd class="text-right">342,45 €</dd>
 </dl>
 <dl class="dlist-align">
-  <dt>Réductions :</dt>
+  <dt>Réduction :</dt>
   <dd class="text-right">0 €</dd>
 </dl>
 <dl class="dlist-align h4">
   <dt>Total:</dt>
-  <dd class="text-right"><strong>666 €</strong></dd>
+  <dd class="text-right"><strong>342,45 €</strong></dd>
 </dl>
 <hr>
+<p>Moyens de paiement disponibles :</p>
 <figure class="itemside mb-3">
 	<aside class="aside"><img src="images/icons/pay-visa.png"></aside>
-	 <div class="text-wrap small text-muted">
-Pay 84.78 AED ( Save 14.97 AED )
-By using ADCB Cards
-	 </div>
-</figure>
-<figure class="itemside mb-3">
 	<aside class="aside"> <img src="images/icons/pay-mastercard.png"> </aside>
-	<div class="text-wrap small text-muted">
-Pay by MasterCard and Save 40%. <br>
-Lorem ipsum dolor
-	</div>
+	<aside class="aside"> <img src="images/icons/banc.png"> </aside>
+	<aside class="aside"> <img src="images/icons/paypal.png"> </aside>
+
 </figure>
 
 	</aside> <!-- col.// -->

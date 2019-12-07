@@ -109,7 +109,7 @@ font-size: 20px;
 						<div class="icon-wrap"><i class="text-warning icon-sm fa fa-user"></i></div>
 						<div class="text-wrap text-dark">
 
-							Connectez-vous
+						Connectez-vous
 						</div>
 					</div>
 				</a>
