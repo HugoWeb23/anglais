@@ -1,21 +1,27 @@
+<?php
+
+$page_name = 'newtheme';
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
-
-	<link rel="stylesheet" href="/css/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="/styles.css">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/css/styles.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/notify.js"></script>
 
 <title>Administration</title>
 
 
 </head>
-<body id="LoginForm">
-<div class="container">
+<body>
+<?php include('header.php'); ?>
+<div class="container-xl">
 	<div class="login-form">
 	<div class="main-div3">
 <?php
@@ -72,8 +78,8 @@ echo 'Le thème est : '.$theme.' ! ';
  ?>
  <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/index.php">Accueil</a></li>
-		 <li class="breadcrumb-item"><a href="/admin/">Administration</a></li>
+    <li class="breadcrumb-item"><a href="../index.php">Accueil</a></li>
+		 <li class="breadcrumb-item"><a href="../admin/">Administration</a></li>
     <li class="breadcrumb-item active" aria-current="page">Créer un thème</li>
   </ol>
 </nav>

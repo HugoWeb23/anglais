@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require('config.php');
 
  ?>
@@ -26,30 +28,36 @@ require('config.php');
    <?php
 
    $id = ($_GET['id']);
-   if($id != "") {
+   if(isset($id) && !empty($id)) {
 
      ?>
 
-     <h1>Voici tes résultats</h1>
-
+   
      <?php
-
-     $req22 = $bdd->query('SELECT * FROM parties WHERE id='.$id.' ORDER BY id');
-
-     $score = $req22->fetch();
-
-     $stmt = $bdd -> prepare ( "SELECT count(*) FROM selection_questions WHERE id_partie = ?" );
-     $stmt -> execute ([ $id ]);
-     $count = $stmt -> fetchColumn ();
-
-
+     $req = $bdd->prepare('SELECT * FROM parties as a LEFT JOIN themes as b ON a.id_theme = b.id WHERE a.id = :id_partie');
+      $req->execute(array('id_partie' => $id));
+      $infos_partie = $req->fetch();
       ?>
+      <h1>Résultats de la partie #<?= $id; ?></h1>
+     <p><font size="5px">Score : <?= $infos_partie['score']; ?></font></p>
+     <?php
+    
 
-     <p><font size="5px">Ton score : <?php echo ' '.$score['points']. '/'.$count. ''; ?></font></p>
+      if($infos_partie['id_theme'] != 'random') { 
+      
+       
+    ?>
+
+      <p>Thème sélectionné : <?= $infos_partie['theme']; ?></p>
+     <?php } ?>
 
    <table class="table">
    <thead>
    <tr>
+   <?php if($infos_partie['id_theme'] == 'random') { ?>
+  <th scope="col">Thème</th>
+   <?php } ?>
+  
     <th scope="col">Question</th>
     <th scope="col">Bonne réponse</th>
     <th scope="col">Ta réponse</th>
@@ -59,42 +67,33 @@ require('config.php');
 
 
      <?php
-
-     $resultats = $bdd->query('SELECT * FROM selection_questions WHERE id_partie='.$id.' ');
-
-
-   while ($afficher = $resultats->fetch())
-   {
-
-     $req1 = $bdd->query('SELECT * FROM questions WHERE id='.$afficher['id_question'].' ORDER BY id');
-   $question = $req1->fetch();
-
-
-
-     $req2 = $bdd->query('SELECT * FROM historique_reponses WHERE id_partie='.$id.' AND id_question='.$afficher['id_question'].' ORDER BY id');
-    $mauvaisereponse = $req2->fetch();
-
-
-
-
-
-echo '
-
+     $req = $bdd->prepare('SELECT a.reponse as rep_saisie, a.correct as correct, b.question as question, b.reponse as reponse, b.intitule_question as intitule, d.theme as theme FROM historique_reponses as a INNER JOIN questions as b ON a.id_question = b.id INNER JOIN parties as c ON a.id_partie = c.id INNER JOIN themes as d ON b.id_theme = d.id WHERE a.id_partie = :id_partie');
+     $req->execute(array('id_partie' => $id));
+     while($afficher = $req->fetch()) {
+  ?>
+      
 
 <tr>
-  <td>'.$question['question'].'</td>
-  <td>'.$question['reponse'].'</td>
-   <td>'.$mauvaisereponse['reponse'].' '; if ($afficher['resultat'] == 3) { echo " <span class=\"badge badge-success\">Correct</span>"; } else { echo " <span class=\"badge badge-danger\">Incorrect</span>"; }  echo '</td>
+<?= $a = $infos_partie['id_theme'] == 'random' ? '<td>'.$afficher['theme'].'</td>' : ''; ?>
+  <td><?= $afficher['question']; ?></td>
+  <td><?= $afficher['reponse']; ?></td>
+  <td><?= $afficher['rep_saisie']; ?>
+  <?php
+  if ($afficher['correct'] == 1) { echo "<span class=\"badge badge-success\">Correct</span>"; } else { echo "<span class=\"badge badge-danger\">Incorrect</span>"; } ?>
+   
 </tr>
-
-';
-} }
+<?php
+}
+   } else {
+    header('location: index.php');
+    exit;
+   }
 
 ?>
 
 </tbody>
    </table>
-   <a href="/index.php"><button class="btn btn-primary btn-lg" class="button">Nouvelle partie</button></a>
+   <a href="index.php"><button class="btn btn-primary btn-lg" class="button">Nouvelle partie</button></a>
  </div>
  </div>
 </div>
