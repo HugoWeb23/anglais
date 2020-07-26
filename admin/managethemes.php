@@ -22,6 +22,13 @@ $page_name = 'managethemes';
 <body>
 <?php include('header.php'); ?>
 <div class="container-xl">
+<nav aria-label="breadcrumb">
+     <ol class="breadcrumb">
+       <li class="breadcrumb-item"><a href="../index.php">Accueil</a></li>
+       <li class="breadcrumb-item"><a href="index.php">Administration</a></li>
+       <li class="breadcrumb-item active" aria-current="page">Gestion des thèmes</li>
+     </ol>
+   </nav>
 <div class="titre-section">
 <div class="d-flex bd-highlight mb-3">
 <h2>Gestion des thèmes</h2>
@@ -45,7 +52,7 @@ while($afficher = $req->fetch()) {
 <td><?= $afficher['id']; ?></td>
 <td><?= $afficher['theme']; ?></td>
 <td><?= $afficher['compteur']; ?></td>
-<td><button type="button" class="btn btn-primary">Questions</button> - <button type="button" class="btn btn-danger deletequestion" data-toggle="modal" data-target="#supprimerTheme" data-id="<?= $afficher['id']; ?>">Supprimer</button></td>
+<td><a href="managequestions.php?themeid=<?= $afficher['id']; ?>"><button type="button" class="btn btn-primary">Questions</button></a> - <button type="button" class="btn btn-danger deletetheme" data-toggle="modal" data-target="#supprimerTheme" data-id="<?= $afficher['id']; ?>">Supprimer</button></td>
 </tr>
 <?php
 }
@@ -70,7 +77,7 @@ while($afficher = $req->fetch()) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-success" id="confirmDeleteQuestion" data-id="">Confirmer</button>
+        <button type="button" class="btn btn-success" id="confirmDeleteTheme" data-id="">Confirmer</button>
       </div>
     </div>
   </div>

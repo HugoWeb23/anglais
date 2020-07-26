@@ -17,6 +17,9 @@
       <li class="nav-item <?php if($page_name == "managethemes") { echo 'active'; } ?>">
         <a class="nav-link" href="managethemes.php">Gestion des thèmes</a>
       </li>
+      <li class="nav-item <?php if($page_name == "managequestions") { echo 'active'; } ?>">
+        <a class="nav-link" href="managequestions.php">Gestion des questions</a>
+      </li>
     </ul>
   </div>
 </nav>

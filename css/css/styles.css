@@ -1,6 +1,9 @@
+.navbar {
+margin-bottom: 20px;
+}
+
 .titre-section {
-font-size: 2rem;
-padding: 15px;
+padding: 15px 0;
 }
 
 .btn-perso {
@@ -10,4 +13,8 @@ height: 48px;
 h2 {
 margin: 0!important;
 line-height: 1.5!important;
+}
+
+.search {
+margin-bottom: 20px;
 }
