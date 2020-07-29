@@ -1,10 +1,11 @@
 <?php
 
 require('../../config.php');
-
-$search = $_POST['search'];
+require('../functions/functions.php');
 
 if(isset($_POST['action']) && $_POST['action'] == 'search') {
+
+$search = secure_str($_POST['search']);
 
 $req = $bdd->prepare('SELECT a.id as id_question, a.question as question, a.reponse as reponse, a.id_theme as question_id_theme, a.intitule_question, b.id as id_theme, b.theme as nom_theme FROM questions as a LEFT JOIN themes as b ON a.id_theme = b.id WHERE a.question LIKE :question OR a.reponse LIKE :reponse OR b.theme LIKE :nom_theme');
 $req->execute(array('question' => '%'.$search.'%', 'reponse' => '%'.$search.'%', 'nom_theme' => '%'.$search.'%')) or die(print_r($req->errorInfo(), TRUE));

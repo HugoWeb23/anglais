@@ -1,6 +1,9 @@
 <?php
 
+session_start();
 require('../config.php');
+require('functions/functions.php');
+isConnected();
 
 $page_name = 'managethemes';
 
@@ -52,7 +55,7 @@ while($afficher = $req->fetch()) {
 <td><?= $afficher['id']; ?></td>
 <td><?= $afficher['theme']; ?></td>
 <td><?= $afficher['compteur']; ?></td>
-<td><a href="managequestions.php?themeid=<?= $afficher['id']; ?>"><button type="button" class="btn btn-primary">Questions</button></a> - <button type="button" class="btn btn-danger deletetheme" data-toggle="modal" data-target="#supprimerTheme" data-id="<?= $afficher['id']; ?>">Supprimer</button></td>
+<td><a href="managequestions.php?themeid=<?= $afficher['id']; ?>"><button type="button" class="btn btn-primary" <?php if($afficher['compteur'] == 0) { echo 'disabled'; } ?>>Questions</button></a> <button type="button" class="btn btn-danger deletetheme" data-toggle="modal" data-target="#supprimerTheme" data-id="<?= $afficher['id']; ?>">Supprimer</button></td>
 </tr>
 <?php
 }

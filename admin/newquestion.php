@@ -1,5 +1,10 @@
 <?php
 
+session_start();
+require('../config.php');
+require('functions/functions.php');
+isConnected();
+
 $page_name = 'newquestion';
 
 ?>
@@ -22,8 +27,6 @@ $page_name = 'newquestion';
 	<div class="login-form">
 	<div class="main-div3">
 <?php
-
-require('../config.php');
 
 	if(isset($_POST['creer'])) {
 

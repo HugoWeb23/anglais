@@ -1,6 +1,9 @@
 <?php
 
+session_start();
 require('../config.php');
+require('functions/functions.php');
+isConnected();
 
 $page_name = 'managequestions';
 
@@ -35,7 +38,7 @@ $page_name = 'managequestions';
 <a href="newquestion.php" class="ml-auto"><button type="button" class="btn btn-outline-primary btn-perso">Créer une question</button></a>
 </div>
 <?php
-if(!isset($_GET['themeid'])) {
+if(!isset($_GET['themeid']) || $_GET['themeid'] == null) {
 ?>
 <input class="form-control form-control-lg search" type="text" id="searchQuestion" placeholder="Recherche une question">
 <div class="resultat"></div>
@@ -45,6 +48,10 @@ $id_theme = $_GET['themeid'];
 $req = $bdd->prepare('SELECT a.id as id_question, a.question as question, a.reponse as reponse, a.id_theme as question_id_theme, intitule_question, b.id as id_theme, b.theme as nom_theme FROM questions as a LEFT JOIN themes as b ON a.id_theme = b.id WHERE a.id_theme = :id_theme');
 $req->execute(array('id_theme' => $id_theme)) or die(print_r($req->errorInfo(), TRUE));
 $resultat = $req->fetchAll();
+if(empty($resultat)) {
+header('location: managequestions.php');
+exit;
+}
 ?>
 <p>Thème sélectionné : <?= $resultat[0]['nom_theme']; ?></p>
 </div>

@@ -1,5 +1,10 @@
 <?php
 
+session_start();
+require('../config.php');
+require('functions/functions.php');
+isConnected();
+
 $page_name = 'index';
 
 ?>

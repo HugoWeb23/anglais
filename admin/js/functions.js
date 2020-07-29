@@ -129,4 +129,132 @@ $(document).on('click', '.deletequestion', function() {
                 })
         });
 
+        $('#adminCreate').click(function() {
+        let first_name = $('#first_name').val();
+        let last_name = $('#last_name').val();
+        let email = $('#email').val();
+        let password = $('#password').val();
+        var regex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
+        if(first_name.length < 2 || last_name.length < 2 || email.length < 2) {
+            $.notify('Certains champs sont vides ou incomplets', 'error');
+        } else if(regex.test(password) == false) {
+            $.notify('Le mot de passe doit contenir 8 caractères dont 1 majuscule, 1 minuscule et un caractère spécial', 'error');
+        } else {
+            $.ajax({
+                url:"ajax/add_admin.php",
+                method:"post",
+                dataType:"json",
+                data: {action:'new_admin', first_name:first_name, last_name:last_name, email:email, password:password},
+                error:function() {
+                $.notify('Une erreur est survenue', 'error');
+                },
+                success:function(data) {
+                if(data.type == 'error') {
+                $.notify(data.message, 'error');
+                } else if(data.type == 'success') {
+                $.notify('Le compte a été créé', 'success');
+                $('#createAdmin').modal('hide');
+                $('.table').append('<tr><td>'+data.id_admin+'</td><td>'+first_name+'</td><td>'+last_name+'</td><td>'+email+'</td><td>0</td><td><button type="button" class="btn btn-primary editAdmin" data-toggle="modal" data-id="'+data.id_admin+'" data-target="#editAdmin">Modifier</button> - <button type="button" class="btn btn-danger deleteAdmin" data-toggle="modal" data-target="#deleteAdmin" data-id="'+data.id_admin+'">Supprimer</button></td></tr>');
+                }
+                },
+                timeout: 10000
+                })
+        }
+        });
+
+        let clickEvent = null;
+        $('.table').on('click', '.deleteAdmin', function() {
+        let click = $(this);
+        clickEvent = click;
+        let id_admin = click.data('id');
+        $('#confirmDeleteAdmin').data('id', id_admin);
+        });
+
+        $('#confirmDeleteAdmin').click(function() {
+        let click = $(this);
+        let id_admin = click.data('id');
+        if(Number.isInteger(id_admin)) {
+            $.ajax({
+                url:"ajax/delete_admin.php",
+                method:"post",
+                dataType:"json",
+                data: {action:'delete_admin', id_admin:id_admin},
+                error:function() {
+                $.notify('Une erreur est survenue', 'error');
+                },
+                success:function(data) {
+                if(data.type == 'error') {
+                $.notify(data.message, 'error');
+                } else if(data.type == 'success') {
+                $.notify(data.message, 'success');
+                $('#deleteAdmin').modal('hide');
+                clickEvent.closest('tr').remove();
+                }
+                },
+                timeout: 10000
+                })
+        } else {
+        $.notify('L\'ID du compte administrateur n\'est pas valide', 'error');
+        }
+        });
+
+    let edit = null;
+    $('.table').on('click', '.editAdmin', function() {
+    let click = $(this);
+    edit = click;
+    let id_admin = click.data('id');
+    let first_name = click.closest('tr').find('td').eq(1).text();
+    let last_name = click.closest('tr').find('td').eq(2).text();
+    let email = click.closest('tr').find('td').eq(3).text();
+    $('#editAdmin').find('#first_name').val(first_name);
+    $('#editAdmin').find('#last_name').val(last_name);
+    $('#editAdmin').find('#email').val(email);
+    $('#confirmUpdateAdmin').data('id', id_admin);
+    })
+
+   
+
+   $('#confirmUpdateAdmin').click(function() {
+    let id_admin = $(this).data('id');
+    let first_name = $('#editAdmin').find('#first_name').val();
+    let last_name = $('#editAdmin').find('#last_name').val();
+    let email = $('#editAdmin').find('#email').val();
+    let password = $('#editAdmin').find('#password').val();
+    let regex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
+    if(first_name.length < 2 || last_name.length < 2 || email.length < 2) {
+        $.notify('Certains champs sont vides ou incomplets', 'error');
+    }  else if(Number.isInteger(id_admin) == false) {
+        $.notify('L\'ID du compte administrateur n\'est pas valide', 'error');
+    } else {
+        let checkpassword = true;
+        if(password.length > 0 && regex.test(password) == false) {
+        $.notify('Le mot de passe doit contenir 8 caractères dont 1 majuscule, 1 minuscule et un caractère spécial', 'error');
+        checkpassword = false;
+        }
+        if(checkpassword == true) {
+            $.ajax({
+                url:"ajax/update_admin.php",
+                method:"post",
+                dataType:"json",
+                data: {action:'update_admin', id_admin:id_admin, first_name:first_name, last_name:last_name, email:email, password:password},
+                error:function() {
+                $.notify('Une erreur est survenue', 'error');
+                },
+                success:function(data) {
+                if(data.type == 'error') {
+                $.notify(data.message, 'error');
+                } else if(data.type == 'success') {
+                $.notify(data.message, 'success');
+                $('#editAdmin').modal('hide');
+                edit.closest('tr').find('td').eq(1).text(first_name);
+                edit.closest('tr').find('td').eq(2).text(last_name);
+                edit.closest('tr').find('td').eq(3).text(email);
+                }
+                },
+                timeout: 10000
+                })
+        }
+    }
+    });
+
 });

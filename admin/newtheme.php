@@ -1,5 +1,10 @@
 <?php
 
+session_start();
+require('../config.php');
+require('functions/functions.php');
+isConnected();
+
 $page_name = 'newtheme';
 
 ?>
@@ -26,8 +31,6 @@ $page_name = 'newtheme';
 	<div class="main-div3">
 <?php
 
-require('../config.php');
-
 	if(isset($_POST['creer'])) {
 
 $theme = ($_POST['theme']);
@@ -49,7 +52,7 @@ $failure = true;
 	if($failure == false){
 
 $req = $bdd->prepare('INSERT INTO themes(theme) VALUES(:theme)');
-$req->execute(array('theme' => $theme));
+$req->execute(array('theme' => secure_str($theme)));
 
 echo "
 	<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">

@@ -55,7 +55,7 @@ $resultat1 = $req2->fetch();
 <h1>Question <span id="current_question"><?= $_SESSION['questions']['current_question']; ?></span> sur <?= $all_questions['nb_questions'] ?></h1>
 <p><span id="theme">Thème : <?= $resultat1['theme']; ?></span></p>
 <p><span id="intitule"><?php echo $resultat1['intitule_question']; ?> :</span> <font size="5px"><b><span id="text_question"><?php echo $resultat1['question']; ?></span></b></font>
-<p><button id="indice">Indice</button></p>
+<p><button class="btn btn-success" id="indice">Indice</button></p>
   <p><input class="form-control form-control-lg" type="text" id="reponse" name="reponse" autocomplete="off" autofocus></input>
     <p><input class="btn btn-primary btn-lg" id="valider_reponse" type="button" data-id_question="<?= $current_question; ?>" name="valider" value="Valider la réponse"></input>
 
