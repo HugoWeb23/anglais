@@ -79,6 +79,15 @@ let id_question = $('#valider_reponse').data('id_question');
         },
         timeout: 10000
         })
-})
+});
+
+$('#theme').change(function() {
+let id_theme = $(this).val();
+if(id_theme == 'auto') {
+$('.themes-speciaux').css('display', 'block');
+} else {
+$('.themes-speciaux').css('display', 'none');
+}
+});
 
 });

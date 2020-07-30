@@ -257,4 +257,36 @@ $(document).on('click', '.deletequestion', function() {
     }
     });
 
+    let deletepart = null;
+    $('.deletepart').click(function() {
+    let click = $(this);
+    deletepart = click;
+    let id_partie = click.data('id');
+    $('#confirmDeletePart').data('id', id_partie);
+    });
+
+    $('#confirmDeletePart').click(function() {
+    let click = $(this);
+    let id_partie = click.data('id');
+    $.ajax({
+        url:"ajax/delete_part.php",
+        method:"post",
+        dataType:"json",
+        data: {action:'delete_part', id_partie:id_partie},
+        error:function() {
+        $.notify('Une erreur est survenue', 'error');
+        },
+        success:function(data) {
+        if(data.type == 'error') {
+        $.notify(data.message, 'error');
+        } else if(data.type == 'success') {
+        $('#supprimerTheme').modal('hide');
+        deletepart.closest('tr').remove();
+        $.notify('Partie supprimée', 'success');
+        }
+        },
+        timeout: 10000
+        })
+    });
+
 });

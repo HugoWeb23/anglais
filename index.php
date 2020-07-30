@@ -11,7 +11,7 @@ require("config.php");
 
 $theme = ($_POST['theme']);
 $nb_questions = ($_POST['nb_questions']);
-$date = date("d/m/Y à H:i");
+$date = date("d/m/Y");
 
 
 
@@ -106,8 +106,9 @@ header('location: partie.php');
 <h1>Bienvenue</h1>
 <h4>Lancer une partie</h4> <br>
 <p>Choisis un thème: </p>
-<p><select class="form-control form-control" name="theme"></p>
+<p><select class="form-control form-control" name="theme" id="theme"></p>
   <option value="0">Choisis un thème</option>
+  <option value="auto">Questions autogénérées</option>
   <option value="random">Questions sur tous les thèmes</option>
   <?php
   $reponse = $bdd->query('SELECT * FROM themes');
@@ -119,12 +120,32 @@ while ($donnees = $reponse->fetch())
   echo '<option value="'.$donnees['id'].'">'.$donnees['theme'].'</option>';
 }
 
-
-
-$reponse->CloseCursor();
-
 ?>
 </select>
+<div class="themes-speciaux">
+<p>Questions autogénérées: </p>
+<p><select class="form-control form-control" name="theme"></p>
+  <option value="0">Choisis un thème</option>
+  <?php
+  $reponse = $bdd->query('SELECT * FROM parties WHERE type IN (1, 2)');
+
+
+while($donnees = $reponse->fetch()) {
+
+  switch($donnees['type']) {
+    case 1:
+    $type = 'À améliorer';
+    break;
+    case 2:
+    $type = 'Non joué depuis 1 semaine';
+    break;
+    }
+
+  echo '<option value="'.$donnees['id'].'">'.$type.' ('.$donnees['date_partie'].')</option>';
+}
+?>
+</select>
+</div>
 <p>Nombre de questions à poser:</p>
 <p><input class="form-control form-control" type="text" class="button" name="nb_questions" size="5px"></input>
 <p><button class="btn btn-primary" type="submit" class="button" name="envoyer">Lancer la partie</button></p>

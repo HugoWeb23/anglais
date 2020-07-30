@@ -20,6 +20,9 @@
       <li class="nav-item <?php if($page_name == "managequestions") { echo 'active'; } ?>">
         <a class="nav-link" href="managequestions.php">Gestion des questions</a>
       </li>
+      <li class="nav-item <?php if($page_name == "special-questions") { echo 'active'; } ?>">
+        <a class="nav-link" href="special-questions.php">Questions quotidiennes</a>
+      </li>
       <li class="nav-item <?php if($page_name == "admin-access") { echo 'active'; } ?>">
         <a class="nav-link" href="admin-access.php">Accès à l'administration</a>
       </li>
