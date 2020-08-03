@@ -8,19 +8,14 @@ require('config.php');
  <!DOCTYPE html>
 <html lang="fr">
  <head>
-
-
- <title>Tes résultats</title>
-
+ <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="css/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
 <script src="css/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
- </head>
-
-
+<title>Tes résultats</title>
+</head>
 <body id="LoginForm">
       <div class="container">
         <div class="login-form">
@@ -31,8 +26,6 @@ require('config.php');
    if(isset($id) && !empty($id)) {
 
      ?>
-
-   
      <?php
      $req = $bdd->prepare('SELECT * FROM parties as a LEFT JOIN themes as b ON a.id_theme = b.id WHERE a.id = :id_partie');
       $req->execute(array('id_partie' => $id));

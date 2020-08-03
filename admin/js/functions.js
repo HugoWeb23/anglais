@@ -289,4 +289,31 @@ $(document).on('click', '.deletequestion', function() {
         })
     });
 
+    $('#connexion').submit(function() {
+        let email = $('#email').val();
+        let password = $('#password').val();
+        if(email.length == 0 || password.length == 0) {
+        $.notify('Certains champs sont vides', 'error');
+        } else {
+            $.ajax({
+                url:"ajax/connexion.php",
+                method:"post",
+                dataType:"json",
+                data:{action:'connexion', email:email, password:password},
+                error:function() {
+                alert("Délai d'attente dépassé, merci d'actualiser la page");
+                },
+                success:function(data) {
+               if(data.type == 'error') {
+                $.notify(data.message, 'error');
+               } else if(data.type == 'success') {
+                window.location = 'index.php';
+               }
+                },
+                timeout: 10000
+                })
+        }
+        return false;
+        });
+
 });

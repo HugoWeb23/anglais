@@ -2,89 +2,10 @@
 
 session_start();
 
-$_SESSION['questions'] = array();
-
 require("config.php");
 
+$_SESSION['questions'] = array();
 
-	if(isset($_POST['envoyer'])) {
-
-$theme = ($_POST['theme']);
-$nb_questions = ($_POST['nb_questions']);
-$date = date("d/m/Y");
-
-
-
-$failure = false;
-
-if($theme == 0) {
-
-  echo "
-    <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
-  Choisis un thème !
-    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-      <span aria-hidden=\"true\">&times;</span>
-    </button>
-  </div>";
-  $failure = true;
-}
-
-
-
-if($nb_questions < 1) {
-
-  echo "
-    <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
-  Tu dois afficher au moins 1 question !
-    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-      <span aria-hidden=\"true\">&times;</span>
-    </button>
-  </div>";
-$failure = true;
-
-}
-
-	if($failure == false){
-
-$req = $bdd->prepare('INSERT INTO parties(id_theme, date_partie) VALUES(:id_theme, :date_partie)');
-$req->execute(array('id_theme' => $theme, 'date_partie' => $date));
-$id_partie = $bdd->lastInsertId();
-
-if ($theme == 'random') {
-
-  $req1 = $bdd->query('SELECT * FROM questions');
-
-  $resultat = $req1->fetchAll(PDO::FETCH_COLUMN, 0);
-
-} else {
-
-$req1 = $bdd->prepare('SELECT * FROM questions WHERE id_theme = :theme');
-$req1->execute(array('theme' => $theme));
-
-$resultat = $req1->fetchAll(PDO::FETCH_COLUMN, 0);
-}
-$array_lenght = count($resultat);
-$i = 0;
-while($i < $nb_questions) {
-$number_random = rand(0, $array_lenght - 1);
-if(empty($resultat)) {
-break;
-}
-if(array_key_exists($number_random, $resultat)) {
-array_push($_SESSION['questions'], $resultat[$number_random]);
-unset($resultat[$number_random]);
-shuffle($_SESSION['questions']);
-$i++;
-}
-}
-$_SESSION['questions']['id_partie'] = $id_partie;
-$_SESSION['questions']['nb_questions'] = count($_SESSION['questions']) - 1;
-$_SESSION['questions']['current_question'] = 1;
-$_SESSION['questions']['score'] = 0;
-$_SESSION['questions']['theme'] = $theme;
-header('location: partie.php');
-}
-}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -101,14 +22,14 @@ header('location: partie.php');
 </head>
 <body>
 <?php include('header.php'); ?>
-<form method='post' action="">
   <div class="container-xl">
 <h1>Bienvenue</h1>
 <h4>Lancer une partie</h4> <br>
-<p>Choisis un thème: </p>
-<p><select class="form-control form-control" name="theme" id="theme"></p>
+<form id="lancerPartie">
+<p>Choisis un thème : </p>
+<p><select class="form-control form-control" id="theme"></p>
   <option value="0">Choisis un thème</option>
-  <option value="auto">Questions autogénérées</option>
+  <option value="auto">Questions quotidiennes</option>
   <option value="random">Questions sur tous les thèmes</option>
   <?php
   $reponse = $bdd->query('SELECT * FROM themes');
@@ -123,8 +44,8 @@ while ($donnees = $reponse->fetch())
 ?>
 </select>
 <div class="themes-speciaux">
-<p>Questions autogénérées: </p>
-<p><select class="form-control form-control" name="theme"></p>
+<p>Questions quotidiennes : </p>
+<p><select class="form-control form-control" id="special_questions"></p>
   <option value="0">Choisis un thème</option>
   <?php
   $reponse = $bdd->query('SELECT * FROM parties WHERE type IN (1, 2)');
@@ -146,10 +67,30 @@ while($donnees = $reponse->fetch()) {
 ?>
 </select>
 </div>
-<p>Nombre de questions à poser:</p>
-<p><input class="form-control form-control" type="text" class="button" name="nb_questions" size="5px"></input>
-<p><button class="btn btn-primary" type="submit" class="button" name="envoyer">Lancer la partie</button></p>
-
+<p>Nombre de questions à poser :</p>
+<p><input class="form-control form-control" type="text" class="button" id="nb_questions" size="5px">
+<p><button class="btn btn-warning" type="button" id="manual-selection">Sélection manuelle</button></p>
+<p><button class="btn btn-primary btn-lg" class="button" id="start_button">Lancer la partie</button></p>
+</form>
+<!-- Modal -->
+<div class="modal fade" id="select_questions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sélection des questions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary" id="selectSpecificQuestions" data-id="">Confirmer</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 </body>
 </html>

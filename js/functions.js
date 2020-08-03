@@ -90,4 +90,90 @@ $('.themes-speciaux').css('display', 'none');
 }
 });
 
+$('#lancerPartie').submit(function() {
+let special_questions = $('#special_questions').val();
+let theme = $('#theme').val();
+let nb_questions = $('#nb_questions').val();
+if(document.getElementById('start_button').hasAttribute('disabled') == false) {
+if(theme == 0 || nb_questions == 0 || theme == undefined || nb_questions == undefined) {
+$.notify('Certains champs sont vides', 'error');
+} else if(theme == 'auto' && special_questions == 0 || special_questions == undefined) {
+$.notify('Certains champs sont vides', 'error');
+} else {
+$('#start_button').attr('disabled', 'disabled');
+$('#start_button').text('Veuillez patienter ...');
+    $.ajax({
+        url:"ajax/start_part.php",
+        method:"post",
+        dataType:"json",
+        data:{action:'start_part', special_part:special_questions, theme:theme, nb_questions:nb_questions},
+        error:function() {
+        alert("Délai d'attente dépassé, merci d'actualiser la page");
+        },
+        success:function(data) {
+       if(data.type == 'error') {
+        $.notify(data.message, 'error');
+        $('#start_button').removeAttr('disabled');
+        $('#start_button').val('Lancer la partie');
+       } else if(data.type == 'success') {
+        window.location = 'partie.php';
+       }
+        },
+        timeout: 10000
+        })
+}
+}
+return false;
+});
+
+$('#manual-selection').click(function() {
+let themeA = $('#theme').val();
+let themeB = $('#special_questions').val();
+if(themeA == 'auto') {
+if(themeB == 0 || themeB == undefined) {
+$.notify('Tu dois sélectionner un sous-thème !', 'error');
+} else {
+    $('#select_questions').modal('show');
+}
+} else {
+if(themeA == 0 || themeA == undefined) {
+    $.notify('Tu dois sélectionner un thème !', 'error');
+} else if(themeA == 'random') {
+    $.notify('Non disponible pour les questions aléatoires', 'error');
+} else {
+    $.ajax({
+        url:"ajax/select_questions.php",
+        method:"post",
+        dataType:"json",
+        data:{action:'select_questions', id_theme:themeA, type:1},
+        error:function() {
+        alert("Délai d'attente dépassé, merci d'actualiser la page");
+        },
+        success:function(data) {
+            let body = $('#select_questions').find('.modal-body');
+            body.empty();
+            $.each(data, function(i, obj) {
+                body.append('<p><div class="custom-control custom-checkbox mr-sm-2"><input type="checkbox" class="custom-control-input question" id="'+obj.id+'" data-id="'+obj.id+'"> <label class="custom-control-label" for="'+obj.id+'">'+obj.question+'</div></p>');
+               });
+            if(data.length == 0) {
+            body.append('Aucune question');
+            }
+            $('#select_questions').modal('show');
+       
+        },
+        timeout: 10000
+        })
+    
+}
+}
+});
+
+$('#selectSpecificQuestions').click(function() {
+let questions = new Array();
+$('.modal-body').find('input:checked').each(function() {
+questions.push($(this).data('id'));
+});
+console.log(questions)
+});
+
 });

@@ -1,18 +1,13 @@
 <?php
 
-/*
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-*/
 
 require('config.php');
-/*
 require('src/Exception.php');
 require('src/PHPMailer.php');
 require('src/SMTP.php');
-*/
 
 $year = date('y');
 $day = date('d');
@@ -65,7 +60,7 @@ $req->execute(array('id_partie' => $id_partie, 'id_question' => $affich['id_ques
 }
 $body += '<p>Il y a également des anciennes questions non jouées depuis 1 semaine.</p>';
 }
-/*
+
 $mail = new PHPMailer(true);
 
 
@@ -89,4 +84,3 @@ $mail = new PHPMailer(true);
     $mail->Body    =  $body;
 
     $mail->send();
-    */
