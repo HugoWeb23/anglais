@@ -68,7 +68,7 @@ while($donnees = $reponse->fetch()) {
 </select>
 </div>
 <p>Nombre de questions à poser :</p>
-<p><input class="form-control form-control" type="text" class="button" id="nb_questions" size="5px">
+<p><input class="form-control form-control" type="number" class="button" id="nb_questions" size="5px">
 <p><button class="btn btn-warning" type="button" id="manual-selection">Sélection manuelle</button></p>
 <p><button class="btn btn-primary btn-lg" class="button" id="start_button">Lancer la partie</button></p>
 </form>

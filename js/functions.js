@@ -102,29 +102,13 @@ $.notify('Certains champs sont vides', 'error');
 } else {
 $('#start_button').attr('disabled', 'disabled');
 $('#start_button').text('Veuillez patienter ...');
-    $.ajax({
-        url:"ajax/start_part.php",
-        method:"post",
-        dataType:"json",
-        data:{action:'start_part', special_part:special_questions, theme:theme, nb_questions:nb_questions},
-        error:function() {
-        alert("Délai d'attente dépassé, merci d'actualiser la page");
-        },
-        success:function(data) {
-       if(data.type == 'error') {
-        $.notify(data.message, 'error');
-        $('#start_button').removeAttr('disabled');
-        $('#start_button').val('Lancer la partie');
-       } else if(data.type == 'success') {
-        window.location = 'partie.php';
-       }
-        },
-        timeout: 10000
-        })
+startPart(special_questions, theme, nb_questions);
 }
 }
 return false;
 });
+
+
 
 $('#manual-selection').click(function() {
 let themeA = $('#theme').val();
@@ -170,10 +154,39 @@ if(themeA == 0 || themeA == undefined) {
 
 $('#selectSpecificQuestions').click(function() {
 let questions = new Array();
+let special_questions = $('#special_questions').val();
+let theme = $('#theme').val();
+let nb_questions = 0;
 $('.modal-body').find('input:checked').each(function() {
 questions.push($(this).data('id'));
 });
-console.log(questions)
+if(questions.length > 0) {
+startPart(special_questions, theme, nb_questions, questions);
+} else {
+ $.notify('Tu dois au moins sélectionner une question', 'error');
+}
 });
+
+function startPart(special_questions, theme, nb_questions, manual_questions = null) {
+    $.ajax({
+        url:"ajax/start_part.php",
+        method:"post",
+        dataType:"json",
+        data:{action:'start_part', special_part:special_questions, theme:theme, nb_questions:nb_questions, manual_questions:manual_questions},
+        error:function() {
+        alert("Délai d'attente dépassé, merci d'actualiser la page");
+        },
+        success:function(data) {
+       if(data.type == 'error') {
+        $.notify(data.message, 'error');
+        $('#start_button').removeAttr('disabled');
+        $('#start_button').val('Lancer la partie');
+       } else if(data.type == 'success') {
+        window.location = 'partie.php';
+       }
+        },
+        timeout: 10000
+        })
+}
 
 });

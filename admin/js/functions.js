@@ -306,6 +306,7 @@ $(document).on('click', '.deletequestion', function() {
                 success:function(data) {
                if(data.type == 'error') {
                 $.notify(data.message, 'error');
+                $('#password').val('');
                } else if(data.type == 'success') {
                 window.location = 'index.php';
                }
