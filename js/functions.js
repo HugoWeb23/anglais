@@ -189,4 +189,30 @@ function startPart(special_questions, theme, nb_questions, manual_questions = nu
         })
 }
 
+$('#restart-part').click(function() {
+let last_part = $(this).data('id');
+let id_theme = $(this).data('id_theme');
+if(id_theme == 'random' || Number.isInteger(last_part) && Number.isInteger(id_theme)) {
+    $.ajax({
+        url:"ajax/restart_part.php",
+        method:"post",
+        dataType:"json",
+        data:{action:'restart_part', last_part:last_part, id_theme:id_theme},
+        error:function() {
+        alert("Délai d'attente dépassé, merci d'actualiser la page");
+        },
+        success:function(data) {
+       if(data.type == 'error') {
+        $.notify(data.message, 'error');
+       } else if(data.type == 'success') {
+        window.location = 'partie.php';
+       }
+        },
+        timeout: 10000
+        })
+} else {
+$.notify('ID de partie ou de thème invalide', 'error');
+}
+});
+
 });

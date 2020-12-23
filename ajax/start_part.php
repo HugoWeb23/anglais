@@ -15,7 +15,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'start_part') {
     }
     $date = date("d/m/Y");
     
-    if($special_part == 0 && $theme == 0) {
+    if($special_part == 0 && $theme === 0) {
     
       $message = array('type' => 'error', 'message' => 'Il faut choisir un thème !');
   

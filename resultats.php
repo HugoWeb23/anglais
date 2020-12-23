@@ -11,9 +11,12 @@ require('config.php');
  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="css/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="styles.css">
-<script src="css/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="css/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/css/styles.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/notify.js"></script>
 <title>Tes résultats</title>
 </head>
 <body id="LoginForm">
@@ -29,10 +32,14 @@ require('config.php');
      <?php
      $req = $bdd->prepare('SELECT * FROM parties as a LEFT JOIN themes as b ON a.id_theme = b.id WHERE a.id = :id_partie');
       $req->execute(array('id_partie' => $id));
+      if($req->rowCount() == 0) {
+      header('location: index.php');
+      exit;
+      }
       $infos_partie = $req->fetch();
       ?>
       <h1>Résultats de la partie #<?= $id; ?></h1>
-     <p><font size="5px">Score : <?= $infos_partie['score']; ?></font></p>
+     <p><h3>Score : <?= $infos_partie['score']; ?></h3></p>
      <?php
     
 
@@ -86,7 +93,10 @@ require('config.php');
 
 </tbody>
    </table>
+   <div class="result-options">
    <a href="index.php"><button class="btn btn-primary btn-lg" class="button">Nouvelle partie</button></a>
+  <button class="btn btn-primary success" class="button" id="restart-part" data-id="<?= $id; ?>" data-id_theme="<?= $infos_partie['id_theme']; ?>">Recommencer</button>
+   </div>
  </div>
  </div>
 </div>

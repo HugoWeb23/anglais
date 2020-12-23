@@ -5,10 +5,11 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require('config.php');
-require('src/Exception.php');
-require('src/PHPMailer.php');
-require('src/SMTP.php');
+require('mailer/src/Exception.php');
+require('mailer/src/PHPMailer.php');
+require('mailer/src/SMTP.php');
 
+date_default_timezone_set("Europe/Paris");
 $year = date('y');
 $day = date('d');
 $month = date('m');
@@ -17,6 +18,7 @@ $yesterday = date("d/m/Y", mktime(0, 0, 0, $month, $day-1, $year));
 $current_date = date('d/m/Y');
 $last_week = date("d/m/Y", mktime(0, 0, 0, $month, $day-7, $year));
 $subject = 'Tes questions quotidiennes';
+
 
 // Sélection des questions erronées de la veille
 
@@ -36,9 +38,9 @@ foreach($afficher as $affich) {
 $req->execute(array('id_partie' => $id_partie, 'id_question' => $affich['id_question'])) or die(print_r($req->errorInfo(), TRUE));
 
 }
-$body = '<h2>Bonjour Hugo,</h2><p>Des nouvelles questions basées sur les réponses fausses sont disponibles dans l\'APP Anglais.</p>';
+$body = '<p>Bonjour Hugo,</p><p>Des nouvelles questions basées sur les réponses fausses sont disponibles dans l\'APP Anglais.</p>';
 } else {
-$body = '<h2>Bonjour Hugo,</h2><p>Il n\'y a aucune question de disponible aujourd\'hui car tu ne t\'es pas entraîné hier.</p>';
+$body = '<p>Bonjour Hugo,</p><p>Il n\'y a aucune question de disponible aujourd\'hui car tu ne t\'es pas entraîné hier.</p>';
 }
 
 // Sélection des question qui n'ont pas été jouées depuis 1 semaine
@@ -58,11 +60,10 @@ foreach($afficher as $affich) {
 $req->execute(array('id_partie' => $id_partie, 'id_question' => $affich['id_question'])) or die(print_r($req->errorInfo(), TRUE));
 
 }
-$body += '<p>Il y a également des anciennes questions non jouées depuis 1 semaine.</p>';
+$body .= '<p>Il y a également des anciennes questions non jouées depuis 1 semaine.</p>';
 }
 
 $mail = new PHPMailer(true);
-
 
     //Server settings
     $mail->isSMTP();                                            
@@ -71,7 +72,8 @@ $mail = new PHPMailer(true);
     $mail->Username   = 'news@hugo-hourriez.be';                     
     $mail->Password   = 'AAbbcc774411@';                               
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         
-    $mail->Port       = 587;                                   
+    $mail->Port       = 587;      
+    $mail->CharSet = 'UTF-8';                             
 
     //Recipients
     $mail->setFrom('news@hugo-hourriez.be', 'Hugo Hourriez');
